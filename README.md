@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Simple Blog that contains features
+
+1. User Authenticaltion
+   - JWT with localStrategy(without passport.js)
+   - JWT with SNSStrategy(with passport.js)
+2. CRUD of Posts
+   - Auth: I(admin) can only Create Posts
+3. CRUD of Comment from posts
+   - Everyone authenticated User can create comments on Posts
+4. AdminPage
+   - Types of Posts CRUD
