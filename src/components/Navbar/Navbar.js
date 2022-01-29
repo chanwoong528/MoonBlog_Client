@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const menus = [
-    { name: "Main", url: "/", auth: "user" },
-    { name: "Post", url: "/post", auth: "user" },
+    { name: "Main", url: "/", auth: "none" },
+    { name: "Post", url: "/post", auth: "none" },
     { name: "Login", url: "/auth", auth: "none" },
     { name: "Admin", url: "/admin", auth: "admin" },
   ];

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export default function LoginMain() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [islogin, setIslogin] = useState(false);
-
+  const { userDispatch } = useContext(AuthContext);
   const onSubmitLogin = async (e) => {
     e.preventDefault();
     const req = { email, password };
@@ -19,9 +19,18 @@ export default function LoginMain() {
       });
       const data = await res.json();
       if (res.ok) {
-        console.log("ok");
-        localStorage.setItem("token", data.token);
-        setIslogin(true);
+        console.log("onSubmitLogin[response]: ", data);
+        userDispatch({
+          type: "LOGGED_IN_USER",
+          payload: {
+            isLoggedIn: data.isLoggedIn,
+            isAdmin: data.user.admin,
+            user: data.user,
+          },
+        });
+        localStorage.setItem("accToken", data.accToken);
+        localStorage.setItem("refToken", data.refToken);
+      } else {
       }
     } catch (err) {
       console.log("err: ", err);
@@ -32,7 +41,7 @@ export default function LoginMain() {
       const res = await fetch("http://localhost:5002/auth", {
         method: "GET",
         headers: {
-          Authorization: localStorage.getItem("token"),
+          "x-access-token": localStorage.getItem("accToken"),
           "Content-Type": "application/json",
         },
 
