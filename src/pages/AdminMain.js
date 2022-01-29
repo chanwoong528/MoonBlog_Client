@@ -1,34 +1,23 @@
 import React, { useEffect, useState } from "react";
+import customAxios from "../config/customAxios";
 
 export default function AdminMain() {
   const [topic, setTopic] = useState("");
   const [description, setDescription] = useState("");
 
-  useEffect(async () => {
-    const res = await fetch("http://localhost:5002/admin/topic", {
-      method: "GET",
-      headers: {
-        //TODO: localStorage.getItem => to get Item
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
-    const data = await res.json();
-    console.log(data.topics);
+  useEffect(() => {
+    const getTopics = async () => {
+      const res = await customAxios("/admin/topic");
+      const data = await res.data;
+      console.log(data.topics);
+    };
+    getTopics();
   }, []);
+
   const onSubmitTopic = async (e) => {
     e.preventDefault();
-    console.log(topic, description);
-    const req = { topic, description };
-    const res = await fetch("http://localhost:5002/admin/topic", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(req),
-      credentials: "include",
-    });
-    const data = await res.json();
+    const res = await customAxios("admin/topic", { topic, description });
+    const data = await res.data;
     console.log(data);
   };
 

@@ -20,10 +20,10 @@ customAxios.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
-    console.log(
-      "original Request BEFORE: ",
-      originalRequest.headers["x-access-token"]
-    );
+    // console.log(
+    //   "original Request BEFORE: ",
+    //   originalRequest.headers["x-access-token"]
+    // );
     if (error.response.status === 408) {
       //   console.log("error.respons status: ", error.response.status);
       const refToken = localStorage.getItem("refToken");
@@ -33,10 +33,10 @@ customAxios.interceptors.response.use(
       //   console.log("newAccTokken: ", res.data.accToken);
       localStorage.setItem("accToken", res.data.accToken);
       originalRequest.headers["x-access-token"] = res.data.accToken;
-      console.log(
-        "original Request AFTERR: ",
-        originalRequest.headers["x-access-token"]
-      );
+      //   console.log(
+      //     "original Request AFTERR: ",
+      //     originalRequest.headers["x-access-token"]
+      //   );
       return axios(originalRequest);
     }
     return Promise.reject(error);
