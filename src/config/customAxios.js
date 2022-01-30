@@ -30,7 +30,8 @@ customAxios.interceptors.response.use(
       const res = await axios.post("http://localhost:5002/auth/token", {
         refToken,
       });
-      //   console.log("newAccTokken: ", res.data.accToken);
+      // console.log("newAccTokken: ", res.data.accToken);
+
       localStorage.setItem("accToken", res.data.accToken);
       originalRequest.headers["x-access-token"] = res.data.accToken;
       //   console.log(

@@ -9,14 +9,14 @@ export default function AdminMain() {
     const getTopics = async () => {
       const res = await customAxios("/admin/topic");
       const data = await res.data;
-      console.log(data.topics);
+      console.log(data);
     };
     getTopics();
   }, []);
 
   const onSubmitTopic = async (e) => {
     e.preventDefault();
-    const res = await customAxios("admin/topic", { topic, description });
+    const res = await customAxios.post("/admin/topic", { topic, description });
     const data = await res.data;
     console.log(data);
   };

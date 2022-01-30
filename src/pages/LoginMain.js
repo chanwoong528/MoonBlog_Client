@@ -36,22 +36,6 @@ export default function LoginMain() {
       console.log("err: ", err);
     }
   };
-  const onClickCheckLogin = async (e) => {
-    try {
-      const res = await fetch("http://localhost:5002/auth", {
-        method: "GET",
-        headers: {
-          "x-access-token": localStorage.getItem("accToken"),
-          "Content-Type": "application/json",
-        },
-
-        credentials: "include",
-      });
-      const data = await res.json();
-      console.log(data);
-    } catch (err) {}
-  };
-
   return (
     <div>
       <h1>Login Page</h1>
@@ -76,8 +60,6 @@ export default function LoginMain() {
         </div>
         <button type="submit">Log In</button>
       </form>
-
-      <button onClick={onClickCheckLogin}>Check Login</button>
     </div>
   );
 }
