@@ -9,9 +9,10 @@ const TopicReducer = (state = initialTopciState, action) => {
   switch (action.type) {
     case "LOAD_TOPICS":
       console.log("LOAD_TOPICS", action.payload.topics);
+      const newTopics = [...initialTopciState.topics, ...action.payload.topics];
       return {
         isLoading: true,
-        topics: [...state.topics, ...action.payload.topics],
+        topics: newTopics,
       };
   }
 };

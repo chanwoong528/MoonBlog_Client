@@ -23,7 +23,7 @@ case logged in and admin =>  main post admin
   };
 
   return (
-    <div>
+    <nav>
       <h1>Navbar</h1>
       <ul>
         {(isLoggedIn && isAdmin
@@ -50,6 +50,6 @@ case logged in and admin =>  main post admin
           </li>
         )}
       </ul>
-    </div>
+    </nav>
   );
 }
