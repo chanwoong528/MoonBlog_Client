@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import customAxios from "../../config/customAxios";
@@ -25,9 +25,7 @@ export default function SinglePost() {
     return (
       <main>
         <h1>SinglePost: {post.title}</h1>
-        <div>
-          <p>{post.body}</p>
-        </div>
+        <div dangerouslySetInnerHTML={{ __html: post.body }}></div>
       </main>
     );
   }

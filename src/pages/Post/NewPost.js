@@ -4,6 +4,8 @@ import customAxios from "../../config/customAxios";
 
 import { TopicContext } from "../../context/TopicContext";
 
+import Editor from "../../components/Editor/Editor";
+
 export default function NewPost() {
   const { topics } = useContext(TopicContext);
   const [title, setTitle] = useState("");
@@ -18,6 +20,10 @@ export default function NewPost() {
     const res = await customAxios.post("/post", { title, body, postType });
     const data = await res.data;
     console.log(data);
+  };
+  const onChangeEditor = (value) => {
+    console.log(value);
+    setBody(value);
   };
 
   return (
@@ -49,13 +55,14 @@ export default function NewPost() {
           </div>
           <div>
             <label>Content</label>
-            <textarea
+            <Editor value={body} onChange={onChangeEditor} />
+            {/* <textarea
               cols="30"
               rows="10"
               onChange={(e) => {
                 setBody(e.target.value);
               }}
-            ></textarea>
+            ></textarea> */}
           </div>
           <button type="submit">Create Post</button>
         </form>
