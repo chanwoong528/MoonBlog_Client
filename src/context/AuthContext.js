@@ -11,6 +11,7 @@ const initialUserState = {
 const AuthReducer = (state, action) => {
   switch (action.type) {
     case "LOGGED_IN_USER":
+      console.log("LOGGED_IN_USER", action.payload.user);
       return {
         isLoggedIn: action.payload.isLoggedIn,
         isAdmin: action.payload.isAdmin,

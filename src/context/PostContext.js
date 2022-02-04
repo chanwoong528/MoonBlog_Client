@@ -11,6 +11,19 @@ const PostReducer = (state = initialPostState, action) => {
     case "LOAD_POSTS":
       console.log("LOAD_POSTS", action.payload.posts);
       return { isLoading: true, posts: action.payload.posts };
+    case "INC_VIEW_POST":
+      console.log("INC_VIEW_POST", action.payload);
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          if (post._id === action.payload.postId) {
+            return { ...post, views: +post.views + 1 };
+          }
+          return post;
+        }),
+      };
+    default:
+      return state;
   }
 };
 

@@ -68,16 +68,11 @@ export default function PostMain() {
               )
               .map((topic) => {
                 return (
-                  <ul>
-                    <li key={topic._id}>
-                      <PostsList
-                        posts={posts.filter(
-                          (post) => post.postType === topic._id
-                        )}
-                        topic={topic}
-                      />
-                    </li>
-                  </ul>
+                  <PostsList
+                    key={topic._id}
+                    posts={posts.filter((post) => post.postType === topic._id)}
+                    topic={topic}
+                  />
                 );
               })}
           </>

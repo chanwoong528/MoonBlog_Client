@@ -8,8 +8,10 @@ export default function Navbar() {
 
   const menus = [
     { name: "Main", url: "/", auth: "any" },
+    { name: "About", url: "/about", auth: "any" },
     { name: "Post", url: "/post", auth: "any" },
     { name: "Login", url: "/auth", auth: "notLoggedIn" },
+    { name: "Register", url: "/new", auth: "notLoggedIn" },
     { name: "Admin", url: "/admin", auth: "admin" },
   ];
   /*

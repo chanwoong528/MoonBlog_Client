@@ -9,9 +9,12 @@ export default function PostsList({ posts, topic }) {
       <h2>{topic.topic}</h2>
       <ul>
         {posts.map((post) => (
-          <Link to={`/post/${post._id}`}>
-            <li key={post._id}>{post.title}</li>
-          </Link>
+          <li key={post._id}>
+            <Link to={`/post/${post._id}`}>
+              {post.title}
+              {`(${post.views})`}
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

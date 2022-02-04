@@ -10,7 +10,10 @@ export default function MainPostList({ posts }) {
       <ul>
         {posts.map((post) => (
           <Link to={`/post/${post._id}`}>
-            <li key={post._id}>{post.title}</li>
+            <li key={post._id}>
+              {post.title}
+              {`(${post.views})`}
+            </li>
           </Link>
         ))}
       </ul>

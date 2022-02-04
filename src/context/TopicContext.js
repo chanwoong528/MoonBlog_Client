@@ -14,6 +14,8 @@ const TopicReducer = (state = initialTopciState, action) => {
         isLoading: true,
         topics: newTopics,
       };
+    default:
+      return state;
   }
 };
 

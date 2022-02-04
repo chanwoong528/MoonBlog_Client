@@ -7,22 +7,54 @@ import { TopicContext } from "../../context/TopicContext";
 import Editor from "../../components/Editor/Editor";
 
 export default function NewPost() {
-  const { topics } = useContext(TopicContext);
+  const { topics, topicDispatch } = useContext(TopicContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [postType, setPostType] = useState(topics[0]);
-
-  //TODO: get All of the posts
+  const [postType, setPostType] = useState(topics[0]._id);
+  useEffect(() => {
+    const getTopics = async () => {
+      const res = await customAxios("/admin/topic");
+      const data = await res.data;
+      console.log("getTopics: ", data);
+      if (res.status === 200) {
+        topicDispatch({
+          type: "LOAD_TOPICS",
+          payload: { topics: data.topics },
+        });
+      }
+    };
+    getTopics();
+  }, [topicDispatch]);
 
   const onSubmitNewPost = async (e) => {
     e.preventDefault();
-    console.log(title, body, postType);
-    const res = await customAxios.post("/post", { title, body, postType });
-    const data = await res.data;
-    console.log(data);
+    if (postType === "0") {
+      return alert("Should Choose Post Type.");
+    }
+    if (title.length < 1) {
+      return alert("Should Enter Title.");
+    }
+    if (body.length < 1) {
+      return alert("Should Enter Content for Post.");
+    }
+    try {
+      const res = await customAxios.post("/post", {
+        title,
+        body,
+        postType,
+      });
+      const data = await res.data;
+      console.log(data);
+      if (res.status === 200) {
+        setBody("");
+        setTitle("");
+      }
+    } catch (error) {
+      alert("Unable to create Post");
+    }
   };
+
   const onChangeEditor = (value) => {
-    console.log(value);
     setBody(value);
   };
 
@@ -55,14 +87,13 @@ export default function NewPost() {
           </div>
           <div>
             <label>Content</label>
-            <Editor value={body} onChange={onChangeEditor} />
-            {/* <textarea
-              cols="30"
-              rows="10"
-              onChange={(e) => {
-                setBody(e.target.value);
-              }}
-            ></textarea> */}
+            <Editor
+              value={body}
+              onChange={onChangeEditor}
+              editorHeight="600px"
+              containerHeight="700px"
+              type="post"
+            />
           </div>
           <button type="submit">Create Post</button>
         </form>
