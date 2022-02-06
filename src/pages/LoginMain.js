@@ -9,7 +9,7 @@ export default function LoginMain() {
     e.preventDefault();
     const req = { email, password };
     try {
-      const res = await fetch("http://localhost:5002/auth", {
+      const res = await fetch("https://moon-blog-js.herokuapp.com/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
