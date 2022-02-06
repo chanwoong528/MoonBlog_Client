@@ -1,0 +1,22 @@
+@import "../Variables/Variables.scss";
+
+.post-list {
+  padding: 10px;
+  &__title {
+    font-size: $font__header;
+  }
+  &__list {
+    padding: 10px 0;
+  }
+  &__item {
+    list-style: none;
+  }
+  &__link {
+    text-decoration: none;
+    color: $font__color;
+    font-size: $font__body;
+    &:hover {
+      color: $highlight-color;
+    }
+  }
+}

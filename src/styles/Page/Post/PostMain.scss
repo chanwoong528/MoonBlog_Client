@@ -1,0 +1,47 @@
+@import "../../Variables/Variables.scss";
+
+.post-main {
+  &__title {
+    font-size: $font__header;
+  }
+  &__section {
+    display: flex;
+    &__aside {
+      //postNav container
+      &__pull {
+        display: none;
+      }
+      &__pull__hide {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen__mobile) {
+  .post-main {
+    &__title {
+      color: red;
+    }
+    &__section {
+      display: flex;
+      flex-direction: column;
+      &__aside__active {
+        position: absolute;
+        border: 1px solid $tertiary__color;
+        background-color: $tertiary__color;
+        border-radius: 0 10px 10px 0;
+        z-index: 100px;
+      }
+      &__aside {
+        display: none;
+        &__pull {
+          display: flex;
+        }
+        &__pull__hide {
+          display: none;
+        }
+      }
+    }
+  }
+}

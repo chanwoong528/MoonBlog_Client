@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { TopicContext } from "../../context/TopicContext";
 
-export default function PostNav({ setSelectedPostMenu }) {
+import "../../styles/Navbar/PostNav.scss";
+
+export default function PostNav({ setSelectedPostMenu, setShowPostNav }) {
   const { topics } = useContext(TopicContext);
   console.log(topics);
   const onClickSelectTopic = (topicId) => {
@@ -10,15 +12,16 @@ export default function PostNav({ setSelectedPostMenu }) {
   };
 
   return (
-    <nav>
-      <h1>Post Nav</h1>
-      <ul>
+    <nav className="post-nav">
+      <ul className="post-nav__list">
         {topics.map((topic) => {
           if (topic._id === "0") {
             return (
               <li
+                className="post-nav__item"
                 onClick={() => {
                   onClickSelectTopic(topic._id);
+                  setShowPostNav(false);
                 }}
                 key={topic._id}
               >
@@ -28,8 +31,10 @@ export default function PostNav({ setSelectedPostMenu }) {
           }
           return (
             <li
+              className="post-nav__item"
               onClick={() => {
                 onClickSelectTopic(topic._id);
+                setShowPostNav(false);
               }}
               key={topic._id}
             >

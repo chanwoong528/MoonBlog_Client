@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../context/AuthContext";
 
+import "../../styles/Navbar/Navbar.scss";
+
 export default function Navbar() {
   const { isLoggedIn, isAdmin, userDispatch } = useContext(AuthContext);
 
@@ -25,9 +27,8 @@ case logged in and admin =>  main post admin
   };
 
   return (
-    <nav>
-      <h1>Navbar</h1>
-      <ul>
+    <nav className="main-nav">
+      <ul className="main-nav__list">
         {(isLoggedIn && isAdmin
           ? menus.filter((menu) => {
               return menu.auth !== "notLoggedIn";
@@ -41,14 +42,18 @@ case logged in and admin =>  main post admin
             })
         ).map((menu, index) => {
           return (
-            <li key={index}>
-              <Link to={menu.url}>{menu.name}</Link>
+            <li className="main-nav__item" key={index}>
+              <Link className="main-nav__link" to={menu.url}>
+                {menu.name}
+              </Link>
             </li>
           );
         })}
         {isLoggedIn && (
-          <li onClick={onClickLogout}>
-            <Link to="/auth">Log out</Link>
+          <li className="main-nav__item" onClick={onClickLogout}>
+            <Link className="main-nav__link main-nav__link__danger" to="/auth">
+              Log out
+            </Link>
           </li>
         )}
       </ul>
