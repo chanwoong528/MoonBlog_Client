@@ -27,7 +27,7 @@ customAxios.interceptors.response.use(
     if (error.response.status === 408) {
       //   console.log("error.respons status: ", error.response.status);
       const refToken = localStorage.getItem("refToken");
-      const res = await axios.post(`${baseUrl}/token`, {
+      const res = await axios.post(`${baseUrl}/auth/token`, {
         refToken,
       });
       // console.log("newAccTokken: ", res.data.accToken);
