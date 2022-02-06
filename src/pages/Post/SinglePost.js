@@ -8,6 +8,8 @@ import customAxios from "../../config/customAxios";
 
 import Comments from "../../components/Comments/Comments";
 
+import "../../styles/Page/Post/SinglePost.scss";
+
 export default function SinglePost() {
   const { id } = useParams();
   const [post, setPost] = useState({});
@@ -53,14 +55,20 @@ export default function SinglePost() {
     return <h1>404 no post found</h1>;
   } else {
     return (
-      <main>
-        <h1>SinglePost: {post.title}</h1>
+      <main className="single-post-main">
+        <h1 className="single-post-main__title">{post.title}</h1>
 
         <div
+          className="single-post-main__body"
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.body) }}
         ></div>
 
-        <Comments postId={id} comments={comments} />
+        <Comments
+          postId={id}
+          comments={comments}
+          editorHeight="10vh"
+          containerHeight="10vh"
+        />
       </main>
     );
   }

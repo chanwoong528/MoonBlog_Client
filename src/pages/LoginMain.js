@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
+import "../styles/Page/Login/LoginMain.scss";
+
 export default function LoginMain() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,29 +39,33 @@ export default function LoginMain() {
     }
   };
   return (
-    <div>
-      <h1>Login Page</h1>
-      <form onSubmit={onSubmitLogin}>
-        <div>
-          <label>Email: </label>
+    <main className="login-main">
+      <h1 className="login-main__title">Login Page</h1>
+      <form className="login-main__form" onSubmit={onSubmitLogin}>
+        <div className="login-main__form__group">
           <input
             type="text"
+            required
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           />
+          <label className="login-main__form__group__label">Email </label>
         </div>
-        <div>
-          <label>Password: </label>
+        <div className="login-main__form__group">
           <input
+            required
             type="password"
             onChange={(e) => {
               setPassword(e.target.value);
             }}
           />
+          <label className="login-main__form__group__label">Password </label>
         </div>
-        <button type="submit">Log In</button>
+        <button className="login-main__form__btn" type="submit">
+          Log In
+        </button>
       </form>
-    </div>
+    </main>
   );
 }

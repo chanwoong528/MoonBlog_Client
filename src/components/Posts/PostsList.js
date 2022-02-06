@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 import "../../styles/Components/PostsList.scss";
 export default function PostsList({ posts, topic }) {
-  console.log("PostsList[topic]: ", topic.topic);
-  console.log("PostsList[posts]: ", posts);
+  // console.log("PostsList[topic]: ", topic.topic);
+  // console.log("PostsList[posts]: ", posts);
   return (
     <div className="post-list">
       <h2 className="post-list__title">

@@ -1,6 +1,12 @@
 @import "../../Variables/Variables.scss";
 
 .post-main {
+  &__btn {
+    @include buttonStyle();
+    &:hover {
+      @include buttonHover();
+    }
+  }
   &__title {
     font-size: $font__header;
   }
@@ -11,17 +17,14 @@
       &__pull {
         display: none;
       }
-      &__pull__hide {
-        display: none;
-      }
     }
   }
 }
 
 @media screen and (max-width: $screen__mobile) {
   .post-main {
-    &__title {
-    }
+    // &__title {
+    // }
     &__section {
       display: flex;
       flex-direction: column;
@@ -31,14 +34,12 @@
         background-color: $tertiary__color;
         border-radius: 0 10px 10px 0;
         z-index: 100px;
+        left: 0;
       }
       &__aside {
         display: none;
         &__pull {
-          display: flex;
-        }
-        &__pull__hide {
-          display: none;
+          display: contents;
         }
       }
     }

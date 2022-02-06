@@ -1,0 +1,27 @@
+@import "../Variables/Variables.scss";
+.comments-main {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    &__btn {
+      position: absolute;
+      right: 0;
+      bottom: -20px;
+      @include buttonStyle();
+
+      &:hover {
+        @include buttonHover();
+      }
+    }
+  }
+  &__title {
+    border-bottom: 2px solid $font__color;
+  }
+  &__comments {
+    padding: 10px;
+    margin: 5vh 0;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

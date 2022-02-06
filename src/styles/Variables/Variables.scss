@@ -1,4 +1,5 @@
 $background__color: #0c003d;
+$backgroud__secondary__color: #3e2d6d;
 $primary__color: #005b9b;
 $secondary__color: #0088b6;
 $tertiary__color: #00b5c1;
@@ -18,3 +19,24 @@ $font__footer: 18px;
 // 1025px — 1200px: Desktop
 $screen__mobile: 480px;
 $screen__tablet: 768px;
+
+//Button Style
+@mixin buttonStyle {
+  width: 200px;
+  height: 40px;
+  background-color: $tertiary__color;
+  border: none;
+  border-radius: 8px;
+  color: $font__color;
+  font-size: $font__body;
+}
+@mixin buttonHover {
+  width: 200px;
+  height: 40px;
+  background-color: $secondary__color;
+  border: none;
+  border-radius: 8px;
+  color: $font__color;
+  font-size: $font__body;
+  cursor: pointer;
+}

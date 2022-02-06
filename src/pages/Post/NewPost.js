@@ -6,6 +6,8 @@ import { TopicContext } from "../../context/TopicContext";
 
 import Editor from "../../components/Editor/Editor";
 
+import "../../styles/Page/Post/NewPost.scss";
+
 export default function NewPost() {
   const { topics, topicDispatch } = useContext(TopicContext);
   const [title, setTitle] = useState("");
@@ -59,45 +61,56 @@ export default function NewPost() {
   };
 
   return (
-    <div>
+    <main className="newpost-main">
       <h1>Create New Post</h1>
 
-      <div>
-        <form onSubmit={onSubmitNewPost}>
-          <div>
+      <form onSubmit={onSubmitNewPost}>
+        <div className="newpost-main__header__container">
+          <div className="newpost-main__formgroup">
             <label>Post Type: </label>
             <select
+              className="newpost-main__formgroup__inputbox"
               onChange={(e) => {
                 setPostType(e.currentTarget.value);
               }}
             >
               {topics.map((topic) => {
-                return <option value={topic._id}>{topic.topic}</option>;
+                return (
+                  <option
+                    className="newpost-main__formgroup__inputbox__options"
+                    value={topic._id}
+                  >
+                    {topic.topic}
+                  </option>
+                );
               })}
             </select>
           </div>
-          <div>
+          <div className="newpost-main__formgroup">
             <label>Title</label>
             <input
+              className="newpost-main__formgroup__inputbox"
               type="text"
               onChange={(e) => {
                 setTitle(e.target.value);
               }}
             />
           </div>
-          <div>
-            <label>Content</label>
-            <Editor
-              value={body}
-              onChange={onChangeEditor}
-              editorHeight="600px"
-              containerHeight="700px"
-              type="post"
-            />
-          </div>
-          <button type="submit">Create Post</button>
-        </form>
-      </div>
-    </div>
+          <button className="newpost-main__btn" type="submit">
+            Create Post
+          </button>
+        </div>
+        <div className="newpost-main__formgroup">
+          <label>Content</label>
+          <Editor
+            value={body}
+            onChange={onChangeEditor}
+            editorHeight="60vh"
+            containerHeight="80vh"
+            type="post"
+          />
+        </div>
+      </form>
+    </main>
   );
 }

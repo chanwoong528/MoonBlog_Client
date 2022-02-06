@@ -52,7 +52,7 @@ export default function PostMain() {
       {isAdmin && (
         <div>
           <Link to="/post/new">
-            <button>Create Post</button>
+            <button className="post-main__btn">Create Post</button>
           </Link>
         </div>
       )}
@@ -79,11 +79,7 @@ export default function PostMain() {
           onMouseOver={() => {
             setShowPostNav(true);
           }}
-          className={
-            showPostnav
-              ? "post-main__section__aside__pull__hide"
-              : "post-main__section__aside__pull"
-          }
+          className="post-main__section__aside__pull"
         >
           Category of Posts
         </aside>

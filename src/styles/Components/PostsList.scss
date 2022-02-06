@@ -4,6 +4,7 @@
   padding: 10px;
   &__title {
     font-size: $font__header;
+    border-bottom: 1px solid $font__color;
   }
   &__list {
     padding: 10px 0;

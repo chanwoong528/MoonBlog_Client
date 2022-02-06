@@ -1,0 +1,58 @@
+@import "../../Variables/Variables.scss";
+
+.newpost-main {
+  &__header__container {
+    display: flex;
+    flex-direction: row;
+
+    position: relative;
+  }
+  &__formgroup {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    &__inputbox {
+      width: 200px;
+      height: 30px;
+      color: $font__color;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid $tertiary__color;
+
+      &:focus {
+        background-color: transparent;
+        outline: none;
+        caret-color: $tertiary__color;
+      }
+      &__options {
+        //todo have to make custom element inorder to change style
+        background-color: $tertiary__color;
+      }
+    }
+  }
+  &__btn {
+    @include buttonStyle();
+    align-self: flex-end;
+    position: absolute;
+    right: 10px;
+
+    margin: 10px 0;
+    &:hover {
+      @include buttonHover();
+    }
+  }
+}
+@media screen and (max-width: $screen__mobile) {
+  .newpost-main {
+    &__header__container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__btn {
+      align-self: auto;
+      position: static;
+      margin: 10px;
+    }
+  }
+}

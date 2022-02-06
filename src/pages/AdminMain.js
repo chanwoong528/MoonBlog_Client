@@ -1,15 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+
+import { TopicContext } from "../context/TopicContext";
+
 import customAxios from "../config/customAxios";
 
 export default function AdminMain() {
   const [topic, setTopic] = useState("");
   const [description, setDescription] = useState("");
+  const { topicDispatch, topics } = useContext(TopicContext);
 
   useEffect(() => {
     const getTopics = async () => {
-      const res = await customAxios("/admin/topic");
-      const data = await res.data;
-      console.log(data);
+      try {
+        const res = await customAxios("/admin/topic");
+        const data = await res.data;
+        console.log(data.topics);
+        topicDispatch({
+          type: "LOAD_TOPICS",
+          payload: { topics: data.topics },
+        });
+      } catch (error) {
+        console.log(error);
+      }
     };
     getTopics();
   }, []);
@@ -22,7 +34,7 @@ export default function AdminMain() {
   };
 
   return (
-    <div>
+    <main>
       <h1>Admin Page</h1>
       <div>
         <form onSubmit={onSubmitTopic}>
@@ -47,6 +59,15 @@ export default function AdminMain() {
           <button type="submit">Add Topic</button>
         </form>
       </div>
-    </div>
+      <div>
+        <ul>
+          {topics.map((topic) => {
+            if (topic._id !== "0") {
+              return <li key={topic._id}>{topic.topic}</li>;
+            }
+          })}
+        </ul>
+      </div>
+    </main>
   );
 }

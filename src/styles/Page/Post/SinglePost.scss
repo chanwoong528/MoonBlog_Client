@@ -1,0 +1,20 @@
+@import "../../Variables/Variables.scss";
+
+.single-post-main {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+
+  &__title {
+    margin-bottom: 10px;
+    border-bottom: 2px solid white;
+  }
+  &__body {
+    min-height: 80vh;
+    padding: 10px;
+    border-left: 1px solid left;
+    .ql-syntax {
+      background-color: black;
+    }
+  }
+}

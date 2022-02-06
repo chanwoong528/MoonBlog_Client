@@ -5,9 +5,9 @@ import "../../styles/Navbar/PostNav.scss";
 
 export default function PostNav({ setSelectedPostMenu, setShowPostNav }) {
   const { topics } = useContext(TopicContext);
-  console.log(topics);
+  // console.log(topics);
   const onClickSelectTopic = (topicId) => {
-    console.log(topicId);
+    // console.log(topicId);
     setSelectedPostMenu(topicId);
   };
 

@@ -6,6 +6,8 @@ import { AuthContext } from "../../context/AuthContext";
 import { CommentContext } from "../../context/CommentContext";
 import customAxios from "../../config/customAxios";
 
+import "../../styles/Components/Comments.scss";
+
 export default function Comments({ postId, comments }) {
   const [commentBody, setCommentBody] = useState("");
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -28,7 +30,10 @@ export default function Comments({ postId, comments }) {
       const data = await res.data;
 
       if (res.status === 200) {
-        const newComment = { ...data.comment, author: user };
+        const newComment = {
+          ...data.comment,
+          author: { _id: user.id, ...user },
+        };
         commentDispatch({
           type: "ADD_COMMENT",
           payload: { comment: newComment },
@@ -36,25 +41,32 @@ export default function Comments({ postId, comments }) {
         setCommentBody("");
       }
     } catch (error) {
+      console.log(error);
       alert("Unable to create Comment");
     }
   };
   return (
-    <div>
-      <h4>Comments</h4>
-      <form onSubmit={onSubmitComment}>
+    <div className="comments-main">
+      <form className="comments-main__form" onSubmit={onSubmitComment}>
         <Editor
           value={commentBody}
           onChange={onChangeCommentBody}
-          editorHeight="100px"
-          containerHeight="200px"
+          editorHeight="20vh"
+          containerHeight="30vh"
           readOnly={!isLoggedIn}
         />
-        <button type="submit" disabled={!isLoggedIn}>
+        <button
+          className="comments-main__form__btn"
+          type="submit"
+          disabled={!isLoggedIn}
+        >
           Submit Comment
         </button>
       </form>
-      <div>
+      <div className="comments-main__comments">
+        <h4 className="comments-main__title">
+          {comments.length !== 0 ? "Comments" : "Log In to Comment"}
+        </h4>
         {
           comments.map((comment) => (
             <SingleComment comment={comment} />

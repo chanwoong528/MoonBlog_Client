@@ -2,9 +2,10 @@ import React from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
+import "../../styles/Components/Editor.scss";
+
 class EditorComponent extends React.Component {
   constructor(props) {
-    console.log("@@@@@@@@@@@@@@", props);
     super(props);
   }
 
@@ -23,7 +24,7 @@ class EditorComponent extends React.Component {
           { indent: "-1" },
           { indent: "+1" },
         ],
-        ["link", "image"],
+        ["link"],
         [{ align: [] }, { color: [] }, { background: [] }], // dropdown with defaults from theme
         ["clean"],
         ["code-block"],
@@ -41,7 +42,6 @@ class EditorComponent extends React.Component {
       "bullet",
       "indent",
       "link",
-      "image",
       "align",
       "color",
       "background",
@@ -79,7 +79,7 @@ class EditorComponent extends React.Component {
       };
     }
     return (
-      <div style={{ height: containerHeight }}>
+      <div className="editor" style={{ height: containerHeight }}>
         <ReactQuill
           style={{ height: editorHeight }}
           theme="snow"
@@ -91,11 +91,7 @@ class EditorComponent extends React.Component {
             onChange(editor.getHTML())
           }
           placeholder={
-            readOnly
-              ? "Please Login to Enter Comments..."
-              : type === "post"
-              ? "Wrtie Article..."
-              : "Enter Comments..."
+            type === "post" ? "Wrtie Article..." : "Enter Comments..."
           }
         />
       </div>
