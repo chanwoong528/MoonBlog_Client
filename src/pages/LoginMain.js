@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { baseUrl } from "../config/customAxios";
 
 import "../styles/Page/Login/LoginMain.scss";
 
@@ -11,7 +12,7 @@ export default function LoginMain() {
     e.preventDefault();
     const req = { email, password };
     try {
-      const res = await fetch("https://moon-blog-js.herokuapp.com/auth", {
+      const res = await fetch(`${baseUrl}/auth`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,7 +36,7 @@ export default function LoginMain() {
       } else {
       }
     } catch (err) {
-      console.log("err: ", err);
+      console.log("err: ", err.response.data);
     }
   };
   return (

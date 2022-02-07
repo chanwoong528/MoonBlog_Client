@@ -20,17 +20,24 @@ export default function AdminMain() {
           payload: { topics: data.topics },
         });
       } catch (error) {
-        console.log(error);
+        console.log(error.response.data);
       }
     };
     getTopics();
-  }, []);
+  }, [topicDispatch]);
 
   const onSubmitTopic = async (e) => {
     e.preventDefault();
-    const res = await customAxios.post("/admin/topic", { topic, description });
-    const data = await res.data;
-    console.log(data);
+    try {
+      const res = await customAxios.post("/admin/topic", {
+        topic,
+        description,
+      });
+      const data = await res.data;
+      console.log(data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
   };
 
   return (
@@ -61,11 +68,11 @@ export default function AdminMain() {
       </div>
       <div>
         <ul>
-          {topics.map((topic) => {
-            if (topic._id !== "0") {
+          {topics
+            .filter((topic) => topic._id !== "0")
+            .map((topic) => {
               return <li key={topic._id}>{topic.topic}</li>;
-            }
-          })}
+            })}
         </ul>
       </div>
     </main>

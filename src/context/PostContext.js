@@ -22,6 +22,17 @@ const PostReducer = (state = initialPostState, action) => {
           return post;
         }),
       };
+    case "UPDATE_POST":
+      console.log("UPDATE_POST", action.payload);
+      return {
+        ...state,
+        posts: state.posts.map((post) => {
+          if (post._id === action.payload.postId) {
+            return { ...post, body: action.payload.body };
+          }
+          return post;
+        }),
+      };
     default:
       return state;
   }

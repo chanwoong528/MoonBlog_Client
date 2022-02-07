@@ -17,6 +17,14 @@ const CommentReducer = (state = initialCommentState, action) => {
         ...state,
         comments: [...state.comments, action.payload.comment],
       };
+    case "DELTE_COMMENT":
+      console.log("DELTE_COMMENT", action.payload.comment);
+      return {
+        ...state,
+        comments: state.comments.filter(
+          (comment) => comment._id !== action.payload.comment._id
+        ),
+      };
     default:
       return state;
   }

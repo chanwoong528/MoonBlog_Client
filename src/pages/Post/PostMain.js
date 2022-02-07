@@ -20,25 +20,33 @@ export default function PostMain() {
 
   useEffect(() => {
     const getPosts = async () => {
-      const res = await customAxios("/post");
-      const data = await res.data;
-      console.log("getPosts: ", data);
-      if (res.status === 200) {
-        postDispatch({ type: "LOAD_POSTS", payload: { posts: data.posts } });
+      try {
+        const res = await customAxios("/post");
+        const data = await res.data;
+        console.log("getPosts: ", data);
+        if (res.status === 200) {
+          postDispatch({ type: "LOAD_POSTS", payload: { posts: data.posts } });
+        }
+      } catch (error) {
+        console.log(error.response.data);
       }
     };
     getPosts();
   }, [postDispatch]);
   useEffect(() => {
     const getTopics = async () => {
-      const res = await customAxios("/admin/topic");
-      const data = await res.data;
-      console.log("getTopics: ", data);
-      if (res.status === 200) {
-        topicDispatch({
-          type: "LOAD_TOPICS",
-          payload: { topics: data.topics },
-        });
+      try {
+        const res = await customAxios("/admin/topic");
+        const data = await res.data;
+        console.log("getTopics: ", data);
+        if (res.status === 200) {
+          topicDispatch({
+            type: "LOAD_TOPICS",
+            payload: { topics: data.topics },
+          });
+        }
+      } catch (error) {
+        console.log(error.response.data);
       }
     };
     //TODO: miss dependency of topicDispatch =? solve this by using useCallback or useMemo

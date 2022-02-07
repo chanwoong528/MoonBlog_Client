@@ -1,7 +1,7 @@
 @import "../Variables/Variables.scss";
 
 @mixin comment_container {
-  min-width: 200px;
+  min-width: 1fr;
   margin: 5px;
   padding: 5px;
   min-height: 50px;
@@ -29,6 +29,18 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 0.5px dashed $font__color;
+  position: relative;
+  &__btn {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    &:hover {
+      color: red;
+      transform: scale(0.95);
+      cursor: pointer;
+    }
+  }
   &__author {
     margin-left: 10px;
   }

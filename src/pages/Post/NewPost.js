@@ -52,6 +52,7 @@ export default function NewPost() {
         setTitle("");
       }
     } catch (error) {
+      console.log(error.response.data);
       alert("Unable to create Post");
     }
   };

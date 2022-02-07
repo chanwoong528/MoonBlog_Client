@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import Editor from "../Editor/Editor";
 import SingleComment from "./SingleComment";
+import customAxios from "../../config/customAxios";
 
 import { AuthContext } from "../../context/AuthContext";
 import { CommentContext } from "../../context/CommentContext";
-import customAxios from "../../config/customAxios";
 
 import "../../styles/Components/Comments.scss";
 
@@ -41,38 +41,44 @@ export default function Comments({ postId, comments }) {
         setCommentBody("");
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
       alert("Unable to create Comment");
     }
   };
   return (
     <div className="comments-main">
-      <form className="comments-main__form" onSubmit={onSubmitComment}>
-        <Editor
-          value={commentBody}
-          onChange={onChangeCommentBody}
-          editorHeight="20vh"
-          containerHeight="30vh"
-          readOnly={!isLoggedIn}
-        />
-        <button
-          className="comments-main__form__btn"
-          type="submit"
-          disabled={!isLoggedIn}
-        >
-          Submit Comment
-        </button>
-      </form>
       <div className="comments-main__comments">
         <h4 className="comments-main__title">
           {comments.length !== 0 ? "Comments" : "Log In to Comment"}
         </h4>
-        {
-          comments.map((comment) => (
-            <SingleComment comment={comment} />
-          ))
-          //map trough comment and returns single comment components
-        }
+
+        <form
+          className="comments-main__form"
+          onSubmit={onSubmitComment}
+          onClick={() => {
+            if (!isLoggedIn) {
+              alert("Please Login to Comment on Post");
+            }
+          }}
+        >
+          <Editor
+            value={commentBody}
+            onChange={onChangeCommentBody}
+            editorHeight="20vh"
+            containerHeight="30vh"
+            readOnly={!isLoggedIn}
+          />
+          <button
+            className="comments-main__form__btn"
+            type="submit"
+            disabled={!isLoggedIn}
+          >
+            Submit Comment
+          </button>
+        </form>
+        {comments.map((comment) => (
+          <SingleComment comment={comment} key={comment._id} />
+        ))}
       </div>
     </div>
   );

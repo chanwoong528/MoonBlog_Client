@@ -2,8 +2,8 @@ import axios from "axios";
 
 let accToken = localStorage.getItem("accToken");
 
-const baseUrl = "https://moon-blog-js.herokuapp.com";
-
+export const baseUrl = "https://moon-blog-js.herokuapp.com";
+//export const baseUrl = "http://localhost:5002";
 const customAxios = axios.create({
   baseURL: baseUrl,
   headers: {
@@ -32,5 +32,4 @@ customAxios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
 export default customAxios;
