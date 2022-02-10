@@ -4,7 +4,7 @@ import customAxios from "../../config/customAxios";
 
 import { TopicContext } from "../../context/TopicContext";
 
-import Editor from "../../components/Editor/Editor";
+import QuillEditor from "../../components/Editor/QuillEditor";
 
 import "../../styles/Page/Post/NewPost.scss";
 
@@ -30,6 +30,7 @@ export default function NewPost() {
 
   const onSubmitNewPost = async (e) => {
     e.preventDefault();
+
     if (postType === "0") {
       return alert("Should Choose Post Type.");
     }
@@ -103,7 +104,14 @@ export default function NewPost() {
         </div>
         <div className="newpost-main__formgroup">
           <label>Content</label>
-          <Editor
+          {/* <Editor
+            value={body}
+            onChange={onChangeEditor}
+            editorHeight="60vh"
+            containerHeight="80vh"
+            type="post"
+          /> */}
+          <QuillEditor
             value={body}
             onChange={onChangeEditor}
             editorHeight="60vh"

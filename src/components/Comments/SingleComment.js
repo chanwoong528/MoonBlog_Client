@@ -50,6 +50,7 @@ export default function SingleComment({ comment }) {
         )}
       </div>
       <div
+        className="comment__container__other__body"
         dangerouslySetInnerHTML={{
           __html: DOMPurify.sanitize(comment.content),
         }}

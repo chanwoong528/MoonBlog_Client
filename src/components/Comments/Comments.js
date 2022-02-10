@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
-import Editor from "../Editor/Editor";
+import QuillEditor from "../Editor/QuillEditor";
+
 import SingleComment from "./SingleComment";
 import customAxios from "../../config/customAxios";
 
@@ -17,7 +18,7 @@ export default function Comments({ postId, comments }) {
   };
   const onSubmitComment = async (e) => {
     e.preventDefault();
-    if (commentBody.length > 150) {
+    if (commentBody.length > 500) {
       return alert("Comments Too Long");
     }
     if (commentBody.length < 1) {
@@ -61,7 +62,7 @@ export default function Comments({ postId, comments }) {
             }
           }}
         >
-          <Editor
+          <QuillEditor
             value={commentBody}
             onChange={onChangeCommentBody}
             editorHeight="20vh"

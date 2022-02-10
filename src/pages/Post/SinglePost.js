@@ -9,10 +9,11 @@ import { PostContext } from "../../context/PostContext";
 import { CommentContext } from "../../context/CommentContext";
 import customAxios from "../../config/customAxios";
 
+import QuillEditor from "../../components/Editor/QuillEditor";
+
 import Comments from "../../components/Comments/Comments";
 
 import "../../styles/Page/Post/SinglePost.scss";
-import EditorComponent from "../../components/Editor/Editor";
 
 export default function SinglePost() {
   const navigate = useNavigate();
@@ -62,6 +63,7 @@ export default function SinglePost() {
   const onChangeEditor = (value) => {
     setBody(value);
   };
+
   const onSubmitEditedBody = async (e) => {
     e.preventDefault();
     try {
@@ -140,7 +142,7 @@ export default function SinglePost() {
                 Cancel
               </button>
             </div>
-            <EditorComponent
+            <QuillEditor
               value={body}
               onChange={onChangeEditor}
               editorHeight="60vh"
@@ -154,13 +156,14 @@ export default function SinglePost() {
             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.body) }}
           ></div>
         )}
-
-        <Comments
-          postId={id}
-          comments={comments}
-          editorHeight="10vh"
-          containerHeight="10vh"
-        />
+        {!editmode && (
+          <Comments
+            postId={id}
+            comments={comments}
+            editorHeight="10vh"
+            containerHeight="10vh"
+          />
+        )}
       </main>
     );
   }

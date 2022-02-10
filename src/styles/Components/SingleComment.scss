@@ -11,11 +11,29 @@
   border-radius: 8px;
 }
 
+@mixin comment_body {
+  padding: 10px;
+
+  .ql-syntax {
+    background-color: #000000;
+    border-radius: 8px;
+    padding: 10px;
+    color: $font__color
+  }
+
+}
+
 .comment__container__other {
   justify-self: end;
   background-color: $danger__color;
   border: 1px solid $danger__color;
   @include comment_container();
+
+  &__body {
+
+    @include comment_body();
+
+  }
 }
 
 .comment__container__self {
@@ -23,6 +41,12 @@
   background-color: $highlight-color;
   border: 1px solid $highlight-color;
   @include comment_container();
+
+  &__body {
+
+    @include comment_body();
+
+  }
 }
 
 .comment__container__info {
@@ -30,20 +54,24 @@
   justify-content: space-between;
   border-bottom: 0.5px dashed $font__color;
   position: relative;
+
   &__btn {
     border: none;
     background-color: transparent;
     position: absolute;
     right: 0;
+
     &:hover {
       color: red;
       transform: scale(0.95);
       cursor: pointer;
     }
   }
+
   &__author {
     margin-left: 10px;
   }
+
   &__date {
     margin-right: 10px;
   }
