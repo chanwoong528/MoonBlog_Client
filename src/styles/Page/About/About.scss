@@ -1,37 +1,11 @@
 @import "../../Variables/Variables.scss";
 
 .about-main {
-  display: flex;
-  flex-direction: column;
-  &__intro {
-    display: inline-block;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
-  &__chart {
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
-  &__sns {
-    position: absolute;
-    padding: 10px;
-    bottom: 0;
-    left: 0;
-    &__list {
-    }
-    &__item {
-      list-style: none;
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-  }
-}
-.blinking {
-  &__show {
-    font-weight: bold;
-  }
-  &__hide {
-    display: none;
-  }
+
+  &__section {}
 }

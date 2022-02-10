@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, { useRef, useMemo } from "react";
 import ReactQuill from "react-quill";
-import Quill from "quill";
+
 import "react-quill/dist/quill.snow.css";
 
 import "../../styles/Components/Editor.scss";
@@ -20,9 +20,9 @@ export default function QuillEditor({
   const quillRef = useRef();
   const imageHandler = async () => {
     console.log("triggered");
-    const config = {
-      header: { "content-type": "multipart/form-data" },
-    };
+    // const config = {
+    //   header: { "content-type": "multipart/form-data" },
+    // };
     const input = document.createElement("input");
     input.setAttribute("type", "file");
     input.setAttribute("accept", "image/*");
@@ -53,24 +53,24 @@ export default function QuillEditor({
     };
   };
 
-  const myFormat = [
-    "header",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "image",
-    "bullet",
-    "indent",
-    "link",
-    "align",
-    "color",
-    "background",
-    "code-block",
-  ];
   const modules = useMemo(() => {
+    const myFormat = [
+      "header",
+      "bold",
+      "italic",
+      "underline",
+      "strike",
+      "blockquote",
+      "list",
+      "image",
+      "bullet",
+      "indent",
+      "link",
+      "align",
+      "color",
+      "background",
+      "code-block",
+    ];
     if (type === "post") {
       return {
         toolbar: {

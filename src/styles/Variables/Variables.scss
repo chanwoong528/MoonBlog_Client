@@ -7,7 +7,7 @@ $highlight-color: #9d7bf7;
 $danger__color: #de6b4f;
 $font__color: #fff;
 
-$font__main-nav: 20px;
+$font__main-nav: 18px;
 $font__post-nav: 18px;
 $font__header: 36px;
 $font__body: 24px;
@@ -30,6 +30,7 @@ $screen__tablet: 768px;
   color: $font__color;
   font-size: $font__body;
 }
+
 @mixin buttonHover {
   width: 200px;
   height: 40px;

@@ -1,0 +1,141 @@
+@import "../../Variables/Variables.scss";
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 94vh;
+    position: relative;
+    justify-content: center;
+
+
+    &__intro {
+        display: inline-block;
+        font-size: 5vw;
+    }
+
+    &__charts {
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        justify-items: center;
+    }
+
+    &__chart {
+        min-width: 0;
+        max-width: 650px;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        &__container {
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            box-shadow: 1px 1px 2px 2px #FFF;
+        }
+    }
+
+    &__sns {
+        font-size: 50px;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        padding: 10px;
+        bottom: 0;
+        left: 0;
+
+
+        &__item {
+            list-style: none;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $screen__mobile) {
+    .main {
+        justify-content: flex-start;
+
+        &__chart {
+            max-width: 250px;
+            max-height: 550px;
+            justify-content: center;
+            align-items: center;
+
+
+            &__container {
+                width: 100%;
+                height: 100%;
+                padding: 10px;
+            }
+
+        }
+    }
+}
+
+@media screen and (max-width: $screen__tablet) {
+    .main {
+        justify-content: flex-start;
+
+        &__charts {
+            grid-template-columns: 1fr;
+        }
+
+        &__chart {
+            max-width: 400px;
+            max-height: 400px;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+
+
+            &__container {
+                width: 100%;
+
+                padding: 10px;
+            }
+
+        }
+
+        &__sns {
+            position: sticky;
+            padding: 10px;
+            right: 0;
+
+
+            &__list {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-end;
+            }
+
+            &__item {
+                list-style: none;
+                font-size: 40px;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
+            }
+        }
+    }
+
+}
+
+
+.blinking {
+    &__show {
+        font-weight: bold;
+    }
+
+    &__hide {
+        display: none;
+    }
+}
