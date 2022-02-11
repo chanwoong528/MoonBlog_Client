@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import customAxios from "../../config/customAxios";
 
@@ -9,6 +10,7 @@ import QuillEditor from "../../components/Editor/QuillEditor";
 import "../../styles/Page/Post/NewPost.scss";
 
 export default function NewPost() {
+  const navigate = useNavigate();
   const { topics, topicDispatch } = useContext(TopicContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -51,6 +53,7 @@ export default function NewPost() {
       if (res.status === 200) {
         setBody("");
         setTitle("");
+        navigate("/post");
       }
     } catch (error) {
       console.log(error.response.data);

@@ -39,7 +39,14 @@ export default function AdminMain() {
       console.log(error.response.data);
     }
   };
-
+  const onClickDeleteTopic = async (delTopic) => {
+    try {
+      console.log(delTopic._id);
+      const res = await customAxios.delete(`/admin/topic/${delTopic._id}:`);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
   return (
     <main>
       <h1>Admin Page</h1>
@@ -71,7 +78,18 @@ export default function AdminMain() {
           {topics
             .filter((topic) => topic._id !== "0")
             .map((topic) => {
-              return <li key={topic._id}>{topic.topic}</li>;
+              return (
+                <li key={topic._id}>
+                  {topic.topic}
+                  <button
+                    onClick={(e) => {
+                      onClickDeleteTopic(topic);
+                    }}
+                  >
+                    X
+                  </button>
+                </li>
+              );
             })}
         </ul>
       </div>
