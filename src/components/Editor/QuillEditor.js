@@ -1,12 +1,15 @@
-import React, { useRef, useMemo } from "react";
+import React, { useRef, useMemo, useCallback } from "react";
 import ReactQuill from "react-quill";
-
 import "react-quill/dist/quill.snow.css";
+import hljs from "highlight.js";
 
+import "highlight.js/styles/github-dark.css";
 import "../../styles/Components/Editor.scss";
 
-import axios from "axios";
-
+import customAxios from "../../config/customAxios";
+hljs.configure({
+  languages: ["javascript"],
+});
 // Quill.register();
 
 export default function QuillEditor({
@@ -18,41 +21,39 @@ export default function QuillEditor({
   readOnly,
 }) {
   const quillRef = useRef();
-  const imageHandler = async () => {
-    console.log("triggered");
-    // const config = {
-    //   header: { "content-type": "multipart/form-data" },
-    // };
+  const imageHandler = useCallback(async () => {
     const input = document.createElement("input");
     input.setAttribute("type", "file");
     input.setAttribute("accept", "image/*");
     input.click();
-
     input.onchange = async () => {
-      const file = input.files[0];
-      let formData = new FormData();
-      formData.append("file", file);
-      formData.append("upload_preset", "gjkt4xrg");
       try {
-        // const res = await customAxios.post("/file", { formData }, config); need this if we want to store it in backend
-        console.log("cloudinary[request]: start");
-        const res = await axios.post(
-          "https://api.cloudinary.com/v1_1/dwu0u1r6l/upload",
-          formData
-        );
-        const data = await res.data;
-        console.log("cloudinary[response]: ", data.url);
-        const img_url = data.url;
+        const file = input.files[0];
+        let file64 = await readFile64(file);
+        const response = await customAxios.post("/file", { file64 });
+        const data = await response.data;
         const editor = quillRef.current.getEditor();
         const range = editor.getSelection();
-        editor.insertEmbed(range, "image", img_url);
+        editor.insertEmbed(range, "image", data.url);
       } catch (error) {
         alert("Unable to Upload Image");
         console.log(error.response);
       }
     };
+  }, []);
+  const readFile64 = async (file) => {
+    let base64Url = new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        resolve(reader.result);
+      };
+      reader.readAsDataURL(file);
+      reader.onerror = () => {
+        reject("Unable to Upload Image from [func readFile64]");
+      };
+    });
+    return base64Url;
   };
-
   const modules = useMemo(() => {
     const myFormat = [
       "header",
@@ -73,6 +74,7 @@ export default function QuillEditor({
     ];
     if (type === "post") {
       return {
+        syntax: { highlight: (text) => hljs.highlightAuto(text).value },
         toolbar: {
           container: myFormat,
           handlers: {
@@ -82,6 +84,7 @@ export default function QuillEditor({
       };
     } else {
       return {
+        syntax: { highlight: (text) => hljs.highlightAuto(text).value },
         toolbar: {
           container: [
             "header",
@@ -99,7 +102,7 @@ export default function QuillEditor({
         },
       };
     }
-  }, [type]);
+  }, [type, imageHandler]);
 
   return (
     <div>

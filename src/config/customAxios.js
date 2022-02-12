@@ -2,8 +2,8 @@ import axios from "axios";
 
 let accToken = localStorage.getItem("accToken");
 
-export const baseUrl = "https://moon-blog-js.herokuapp.com";
-//export const baseUrl = "http://localhost:5002";
+//export const baseUrl = "https://moon-blog-js.herokuapp.com";
+export const baseUrl = "http://localhost:5002";
 const customAxios = axios.create({
   baseURL: baseUrl,
   headers: {
@@ -19,7 +19,7 @@ customAxios.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
-
+    console.log("customAxios[error]: ", error.response);
     if (error.response.status === 408) {
       const refToken = localStorage.getItem("refToken");
       const res = await axios.post(`${baseUrl}/auth/token`, {
@@ -27,6 +27,7 @@ customAxios.interceptors.response.use(
       });
       localStorage.setItem("accToken", res.data.accToken);
       originalRequest.headers["x-access-token"] = res.data.accToken;
+      customAxios.defaults.headers.common["x-access-token"] = res.data.accToken;
       return axios(originalRequest);
     }
     return Promise.reject(error);

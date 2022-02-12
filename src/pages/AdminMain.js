@@ -35,16 +35,33 @@ export default function AdminMain() {
       });
       const data = await res.data;
       console.log(data);
+      if (res.status === 201) {
+        alert("Topic Created");
+        topicDispatch({ type: "ADD_TOPIC", payload: { topic: data.newTopic } });
+      }
     } catch (error) {
+      alert("Unable to create Topic");
       console.log(error.response.data);
     }
   };
   const onClickDeleteTopic = async (delTopic) => {
-    try {
-      console.log(delTopic._id);
-      const res = await customAxios.delete(`/admin/topic/${delTopic._id}:`);
-    } catch (error) {
-      console.log(error.response);
+    let confirm = window.confirm("You Sure To Delete a Topic?");
+    if (confirm) {
+      try {
+        const res = await customAxios.delete(`/admin/topic/${delTopic._id}`);
+        const data = await res.data;
+        if (res.status === 200) {
+          topicDispatch({
+            type: "DELTE_TOPIC",
+            payload: { topicId: delTopic._id },
+          });
+        }
+      } catch (error) {
+        alert("Unable to Delete Topic");
+        console.log(error.response);
+      }
+    } else {
+      return;
     }
   };
   return (

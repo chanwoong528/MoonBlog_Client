@@ -7,14 +7,17 @@
   width: 40px;
   font-size: $font__body;
 }
+
 @mixin adminBtnHover {
   transform: scale(1.1);
   cursor: pointer;
 }
+
 .single-post-main {
   display: flex;
   flex-direction: column;
   padding: 0 10px;
+
   &__editform {
     padding: 10px;
 
@@ -22,48 +25,64 @@
       margin-right: 20px;
       color: $secondary__color;
       @include adminBtn();
+
       &:hover {
         @include adminBtnHover();
         color: $tertiary__color;
       }
     }
+
     &__btn__cancel {
       color: $danger__color;
       @include adminBtn();
+
       &:hover {
         @include adminBtnHover();
         color: red;
       }
     }
   }
+
   &__container {
     display: flex;
     border-bottom: 2px solid $font__color;
     justify-content: space-between;
   }
+
   &__btn__del {
     color: $danger__color;
     @include adminBtn();
+
     &:hover {
       @include adminBtnHover();
       color: red;
     }
   }
+
   &__btn__edit {
     color: $secondary__color;
     @include adminBtn();
+
     &:hover {
       @include adminBtnHover();
       color: $tertiary__color;
     }
   }
+
   &__title {
     margin-bottom: 10px;
   }
+
+  &__date {
+    justify-self: flex-end;
+    align-self: flex-end;
+  }
+
   &__body {
     min-height: 80vh;
     padding: 10px;
     border-left: 1px solid left;
+
     .ql-syntax {
       background-color: black;
     }

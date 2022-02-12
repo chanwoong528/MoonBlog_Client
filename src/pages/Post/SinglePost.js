@@ -24,7 +24,7 @@ export default function SinglePost() {
   const { isAdmin } = useContext(AuthContext);
   const [editmode, setEditMode] = useState(false);
   const [body, setBody] = useState("");
-
+  console.log(post);
   useEffect(() => {
     const getSinglePost = async () => {
       try {
@@ -42,7 +42,7 @@ export default function SinglePost() {
           setBody(data.post.body);
         }
       } catch (error) {
-        console.log("getSinglePost[error]: ", error.response.data);
+        console.log("getSinglePost[error]: ", error.response);
       }
     };
     getSinglePost();
@@ -71,13 +71,13 @@ export default function SinglePost() {
       const data = await res.data;
       alert(data.msg);
       setPost((post) => {
-        return { ...post, body: data.body };
+        return { ...post, body: data.body, update_at: data.update_at };
       });
       setBody(data.body);
       setEditMode(false);
     } catch (error) {
       console.log(error.response);
-      alert(error.response.data);
+      alert(error.response);
     }
   };
   const onClickDeletePost = async (e) => {
@@ -88,10 +88,13 @@ export default function SinglePost() {
         const res = await customAxios.delete(`/post/${id}`);
         const data = await res.data;
         console.log(data);
-        navigate("/post");
+        if (res.status === 201) {
+          postDispatch({ type: "DELETE_POST", payload: { postId: id } });
+          navigate("/post");
+        }
       } catch (error) {
         console.log(error.response);
-        alert(error.response.data);
+        alert(error.response);
       }
     }
   };
@@ -102,6 +105,12 @@ export default function SinglePost() {
       <main className="single-post-main">
         <div className="single-post-main__container">
           <h1 className="single-post-main__title">{post.title}</h1>
+          <h3 className="single-post-main__date">
+            Created at: {post.create_at.slice(0, 10)}
+          </h3>
+          <h3 className="single-post-main__date">
+            Last Updated: {post.update_at.slice(0, 10)}
+          </h3>
           {isAdmin && !editmode && (
             <div>
               <button

@@ -14,6 +14,18 @@ const TopicReducer = (state = initialTopciState, action) => {
         isLoading: true,
         topics: newTopics,
       };
+    case "ADD_TOPIC":
+      console.log("ADD_TOPIC", action.payload.topic);
+      return { ...state, topics: [...state.topics, action.payload.topic] };
+    case "DELTE_TOPIC":
+      console.log("DELTE_TOPIC", action.payload.topicId);
+
+      return {
+        ...state,
+        topics: state.topics.filter((topic) => {
+          return topic._id !== action.payload.topicId;
+        }),
+      };
     default:
       return state;
   }
