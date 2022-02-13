@@ -1,0 +1,73 @@
+@import '../Variables/Variables.scss';
+
+@keyframes zoom_out {
+    from {
+        width: 20%;
+        height: 100%;
+        margin: 0;
+        position: absolute;
+        grid-template-columns: repeat(4, 100px);
+        justify-items: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    to {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes float {
+    from {
+        transform: translate(0, 0px);
+    }
+
+    65% {
+        transform: translate(0, 3px);
+    }
+
+    to {
+        transform: translate(0, -0px);
+    }
+}
+
+.stack {
+    &__container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    &__list {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: repeat(4, 1fr);
+        animation: zoom_out 1s ease-in
+    }
+}
+
+@media screen and (max-width: $screen__mobile) {
+    .stack {
+        &__list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+
+@for $i from 0 to 12 {
+    .stack__item__#{$i} {
+        list-style: none;
+        animation: float 1s infinite;
+        animation-delay: #{$i * 0.1}s;
+
+    }
+}

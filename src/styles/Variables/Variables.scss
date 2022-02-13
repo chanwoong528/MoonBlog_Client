@@ -22,6 +22,7 @@ $font__footer: 18px;
 // 1025px — 1200px: Desktop
 $screen__mobile: 550px;
 $screen__tablet: 768px;
+$screen__pc:992px;
 
 //Button Style
 @mixin buttonStyle {
@@ -32,6 +33,7 @@ $screen__tablet: 768px;
   border-radius: 8px;
   color: $font__color;
   font-size: $font__body;
+  margin: 10px 0;
 }
 
 @mixin buttonHover {

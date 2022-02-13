@@ -8,4 +8,31 @@
   }
 
   &__section {}
+
+  &__section__contact {
+
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__sns {
+      font-size: 40px;
+
+      &__list {
+        display: flex;
+      }
+
+      &__item {
+        list-style: none;
+        margin: 10px;
+      }
+
+      &__item:hover {
+        transform: scale(1.1);
+      }
+    }
+
+  }
 }

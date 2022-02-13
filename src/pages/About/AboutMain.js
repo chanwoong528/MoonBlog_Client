@@ -5,6 +5,7 @@ import JourneyList from "../../components/BlogJourney/JourneyList";
 import ProjectList from "../../components/BlogProjects/ProjectList";
 
 import { personality, techStacks, sns } from "../../Data/AboutPage/Aboutme";
+import TechStack from "../../components/TechStack/TechStack";
 export default function AboutMain() {
   // about creating this blog phase
   // Reason for Creation. As well as about my self with contacts
@@ -73,29 +74,23 @@ export default function AboutMain() {
                   </ul>
                 </p>
               </article>
-              <div>
-                <ul>
-                  {techStacks.map((stack) => {
-                    return (
-                      <li key={stack.name}>
-                        <img src={stack.img} alt={stack.name} />
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+              <TechStack />
             </section>
           </div>
         </section>
         <section className="about-main__section">
           <ProjectList />
         </section>
-        <section>
-          <h4>Contact Me</h4>
-          <div>
-            <ul>
+        <section className="about-main__section__contact">
+          <h2>Contact Me</h2>
+          <div className="about-main__section__contact__sns">
+            <ul className="about-main__section__contact__sns__list">
               {sns.map((item) => {
-                return item.icon;
+                return (
+                  <li className="about-main__section__contact__sns__item">
+                    <a href={item.url}>{item.icon}</a>
+                  </li>
+                );
               })}
             </ul>
           </div>
