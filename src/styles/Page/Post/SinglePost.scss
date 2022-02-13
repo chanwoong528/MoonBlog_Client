@@ -83,8 +83,28 @@
     padding: 10px;
     border-left: 1px solid left;
 
+    a {
+      text-decoration: underline;
+      color: $font__color__a;
+
+      &:hover {
+        text-decoration: none;
+        color: $font__color__a__hover;
+      }
+    }
+
     .ql-syntax {
       background-color: black;
+      overflow-x: scroll;
+
+      &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+        /* make scrollbar transparent */
+      }
+
     }
+
+
   }
 }

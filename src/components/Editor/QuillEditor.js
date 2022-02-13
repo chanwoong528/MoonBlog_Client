@@ -21,6 +21,21 @@ export default function QuillEditor({
   readOnly,
 }) {
   const quillRef = useRef();
+
+  const linkHandler = useCallback((value) => {
+    const editor = quillRef.current.getEditor();
+    if (value) {
+      let href = prompt("Enter the URL", "https://");
+      let basehttps = "https://";
+      if (href.slice(0, 8) === basehttps) {
+        editor.format("link", href);
+      } else {
+        editor.format("link", basehttps + href);
+      }
+    } else {
+      editor.format("link", false);
+    }
+  }, []);
   const imageHandler = useCallback(async () => {
     const input = document.createElement("input");
     input.setAttribute("type", "file");
@@ -56,22 +71,24 @@ export default function QuillEditor({
   };
   const modules = useMemo(() => {
     const myFormat = [
-      "header",
+      { header: [1, 2, 3, 4, 5, 6, false] },
       "bold",
       "italic",
       "underline",
       "strike",
       "blockquote",
-      "list",
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
+      { color: [] },
+      { background: [] },
       "image",
-      "bullet",
-      "indent",
       "link",
-      "align",
-      "color",
-      "background",
+      { align: [] },
       "code-block",
     ];
+
     if (type === "post") {
       return {
         syntax: { highlight: (text) => hljs.highlightAuto(text).value },
@@ -79,6 +96,7 @@ export default function QuillEditor({
           container: myFormat,
           handlers: {
             image: imageHandler,
+            link: linkHandler,
           },
         },
       };
@@ -87,27 +105,26 @@ export default function QuillEditor({
         syntax: { highlight: (text) => hljs.highlightAuto(text).value },
         toolbar: {
           container: [
-            "header",
             "bold",
             "italic",
             "underline",
             "strike",
             "blockquote",
             "link",
-            "align",
-            "color",
-            "background",
+            { color: [] },
+            { background: [] },
             "code-block",
           ],
+          handlers: {
+            link: linkHandler,
+          },
         },
       };
     }
-  }, [type, imageHandler]);
+  }, [type, imageHandler, linkHandler]);
 
   return (
     <div>
-      <h1>QuillEditor</h1>
-
       <div className="editor" style={{ height: containerHeight }}>
         <ReactQuill
           style={{ height: editorHeight }}

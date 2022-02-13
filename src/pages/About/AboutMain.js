@@ -4,6 +4,7 @@ import "../../styles/Page/About/About.scss";
 import JourneyList from "../../components/BlogJourney/JourneyList";
 import ProjectList from "../../components/BlogProjects/ProjectList";
 
+import { personality, techStacks, sns } from "../../Data/AboutPage/Aboutme";
 export default function AboutMain() {
   // about creating this blog phase
   // Reason for Creation. As well as about my self with contacts
@@ -13,10 +14,91 @@ export default function AboutMain() {
       <h1>About Moon Blog</h1>
       <div className="about-main__container">
         <section className="about-main__section">
-          <JourneyList />
+          <div>
+            <h1>Infomation Container</h1>
+            <section>
+              <article>
+                <h2>About MoonBlog</h2>
+                <p>Welcome to the MoonBlog.</p>
+                <p>this blog was made with React, ExpressJS, MongoDB</p>
+                <p>
+                  Motivation for Developing My own Blog without using other
+                  platform such as 'Medium' or 'Tistory' was because it was
+                  really hard to see what customers needs and wants. Therefore I
+                  decided to be a Developer as well as customer by implementing
+                  this blog. Trying to use this blog as my portfolio, by posting
+                  projects that I have done or I am doing or I will be doing.
+                  Feedbacks are always welcome, you could either write me a
+                  comments, or contact me.
+                </p>
+              </article>
+            </section>
+            <section>
+              <h2>About Me</h2>
+              <article>
+                <h4></h4>
+                <p>
+                  I am a Junior Frontend developer who finds developing an app
+                  as the greatest joy. Programming was not something that I was
+                  into when I was young, and even during college year. Basic
+                  Computer Science Programs were very overwhelming to me.
+                  However, when I started to make my own websites, web-app, it
+                  became my hobby also my profession. The moment of happiness
+                  when my first web had first user was unforgettable.
+                </p>
+              </article>
+              <article>
+                <h4></h4>
+                <p>
+                  Although, I am still very inexperienced in many ways, I try as
+                  much as I could to be better.
+                </p>
+              </article>
+              <article>
+                <h4></h4>
+                <p>
+                  I am highly motivated, self-driven, communicative, and
+                  fast/enjoy leaner.
+                  <ul>
+                    {personality.map((cate) => {
+                      return (
+                        <li key={cate.id}>
+                          <div>
+                            <h4>{cate.title}</h4>
+                            <p>{cate.body}</p>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </p>
+              </article>
+              <div>
+                <ul>
+                  {techStacks.map((stack) => {
+                    return (
+                      <li key={stack.name}>
+                        <img src={stack.img} alt={stack.name} />
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </section>
+          </div>
         </section>
         <section className="about-main__section">
           <ProjectList />
+        </section>
+        <section>
+          <h4>Contact Me</h4>
+          <div>
+            <ul>
+              {sns.map((item) => {
+                return item.icon;
+              })}
+            </ul>
+          </div>
         </section>
       </div>
     </main>

@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { AiFillGithub, AiFillFacebook } from "react-icons/ai";
-import { SiNaver } from "react-icons/si";
+
 import BarChart from "../components/Chart/BarChart";
 import DoughnutChart from "../components/Chart/DoughnutChart";
+import { sns } from "../Data/AboutPage/Aboutme";
 
 import "../styles/Page/Main/Main.scss";
 
 export default function Main() {
-  const sns = [
-    { url: "https://github.com/chanwoong528", icon: <AiFillGithub /> },
-    { url: "https://blog.naver.com/cksdnd004", icon: <SiNaver /> },
-    { url: "https://www.facebook.com/cksdnd004", icon: <AiFillFacebook /> },
-  ];
   const intro = "I am a Javascript Developer";
   const [typeintro, setTypeintro] = useState("");
   const [blink, setBlink] = useState(false);

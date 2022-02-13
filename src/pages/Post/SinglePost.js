@@ -161,7 +161,7 @@ export default function SinglePost() {
           </form>
         ) : (
           <div
-            className="single-post-main__body"
+            className="single-post-main__body ql-editor"
             dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.body) }}
           ></div>
         )}
