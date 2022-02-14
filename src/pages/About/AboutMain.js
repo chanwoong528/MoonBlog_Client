@@ -12,16 +12,14 @@ export default function AboutMain() {
 
   return (
     <main className="about-main">
-      <h1>About Moon Blog</h1>
       <div className="about-main__container">
         <section className="about-main__section">
           <div>
-            <h1>Infomation Container</h1>
-            <section>
+            <section className="about-main__section__blog">
               <article>
-                <h2>About MoonBlog</h2>
-                <p>Welcome to the MoonBlog.</p>
-                <p>this blog was made with React, ExpressJS, MongoDB</p>
+                <h2 className="about-main__title">Moon Blog</h2>
+                <p>Welcome to My Blog!</p>
+                <p>This blog was made with React, ExpressJS, MongoDB</p>
                 <p>
                   Motivation for Developing My own Blog without using other
                   platform such as 'Medium' or 'Tistory' was because it was
@@ -34,8 +32,8 @@ export default function AboutMain() {
                 </p>
               </article>
             </section>
-            <section>
-              <h2>About Me</h2>
+            <section className="about-main__section__moon">
+              <h2 className="about-main__title">About Me</h2>
               <article>
                 <h4></h4>
                 <p>
@@ -52,20 +50,19 @@ export default function AboutMain() {
                 <h4></h4>
                 <p>
                   Although, I am still very inexperienced in many ways, I try as
-                  much as I could to be better.
+                  much as I could to be better. I am highly motivated,
+                  self-driven, communicative, and fast/enjoy leaner.
                 </p>
               </article>
               <article>
                 <h4></h4>
                 <p>
-                  I am highly motivated, self-driven, communicative, and
-                  fast/enjoy leaner.
                   <ul>
                     {personality.map((cate) => {
                       return (
-                        <li key={cate.id}>
+                        <li style={{ listStyle: "none" }} key={cate.id}>
                           <div>
-                            <h4>{cate.title}</h4>
+                            <h4 className="cate__title">{cate.title}</h4>
                             <p>{cate.body}</p>
                           </div>
                         </li>
@@ -82,7 +79,7 @@ export default function AboutMain() {
           <ProjectList />
         </section>
         <section className="about-main__section__contact">
-          <h2>Contact Me</h2>
+          <h2 className="about-main__title">Contact Me</h2>
           <div className="about-main__section__contact__sns">
             <ul className="about-main__section__contact__sns__list">
               {sns.map((item) => {

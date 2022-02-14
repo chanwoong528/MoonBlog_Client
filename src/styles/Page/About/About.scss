@@ -1,5 +1,8 @@
 @import "../../Variables/Variables.scss";
 
+
+
+
 .about-main {
 
   &__container {
@@ -7,7 +10,38 @@
     grid-template-columns: 1fr;
   }
 
-  &__section {}
+  &__title {
+
+    font-size: $font__body;
+
+  }
+
+
+
+  &__section {
+    margin: 10px 0;
+
+    &__blog {
+      font-size: 1em;
+
+      &:hover {}
+    }
+
+    &__moon {
+      font-size: 1vw;
+      padding: 10px;
+      list-style: none;
+
+      &:hover {
+        color: black;
+        background-color: white;
+        border-radius: 5px;
+        padding: 10px;
+      }
+    }
+  }
+
+
 
   &__section__contact {
 

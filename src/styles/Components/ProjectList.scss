@@ -1,8 +1,18 @@
 @import '../Variables/Variables.scss';
 
+
+@mixin card {
+    background-color: #fff;
+    color: black;
+    box-shadow: 0 4px 8px 0 rgba(226, 226, 226, 0.2);
+    border-radius: 5px;
+    height: 600px;
+    transition: all 0.5s ease;
+
+}
+
 .project {
     &__list {
-
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 20px;
@@ -20,14 +30,10 @@
 
 }
 
-.card {
-    background-color: #fff;
-    color: black;
+.card__front {
+    @include card();
+    transform: rotateY(0deg);
 
-    box-shadow: 0 4px 8px 0 rgba(226, 226, 226, 0.2);
-    transition: 0.3s;
-    border-radius: 5px;
-    height: 600px;
 
     &:hover {
         box-shadow: 0 8px 16px 0 rgba(255, 253, 253, 0.856);
@@ -53,6 +59,17 @@
                 text-decoration: none;
             }
         }
+    }
+
+}
+
+.card__back {
+    @include card();
+    transform: rotateY(180deg);
+
+    &__container {
+        //to prevent from text being reversed
+        transform: rotateY(-180deg);
     }
 
 }
