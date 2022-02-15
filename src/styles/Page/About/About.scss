@@ -1,72 +1,116 @@
 @import "../../Variables/Variables.scss";
 
-
-
+@mixin section {
+  margin: 10px 10px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  font-size: clamp(16px, 1.5vw, 40px);
+  height: 90vh;
+}
 
 .about-main {
+  width: 100%;
+  margin: 0;
 
   &__container {
     display: grid;
     grid-template-columns: 1fr;
+    scroll-snap-type: y proximity;
+    overflow-y: auto;
+
+    height: 100vh;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+
+    }
   }
 
   &__title {
-
-    font-size: $font__body;
-
+    font-size: $font__header;
   }
 
-
-
   &__section {
-    margin: 10px 0;
+    //width: fit-content;
+    margin: 20px 0;
+    height: 100vh;
+    scroll-snap-align: start;
 
     &__blog {
-      font-size: 1em;
+      @include section();
+      font-size: clamp(16px, 2vw, 70px);
 
-      &:hover {}
+      &__contact {
+        color: black;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $tertiary__color;
+        border-radius: 5px;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+          border: 1px dashed $highlight-color;
+          transform: scale(1.2);
+        }
+
+        &__sns {
+
+          font-size: clamp(40px, 3vw, 80px);
+
+          &__list {
+            display: flex;
+          }
+
+          &__item {
+            list-style: none;
+            margin: 10px;
+
+            & a {
+              color: black;
+            }
+          }
+
+          &__item:hover {
+            transform: scale(1.1);
+          }
+
+        }
+      }
     }
 
     &__moon {
+      @include section();
+    }
+
+    &__project {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       font-size: 1vw;
       padding: 10px;
       list-style: none;
 
-      &:hover {
-        color: black;
-        background-color: white;
-        border-radius: 5px;
-        padding: 10px;
-      }
     }
   }
 
 
 
-  &__section__contact {
 
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    &__sns {
-      font-size: 40px;
-
-      &__list {
-        display: flex;
-      }
-
-      &__item {
-        list-style: none;
-        margin: 10px;
-      }
-
-      &__item:hover {
-        transform: scale(1.1);
-      }
-    }
-
-  }
 }
+
+
+
+// @include pc {}

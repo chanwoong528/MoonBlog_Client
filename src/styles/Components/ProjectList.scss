@@ -8,7 +8,12 @@
     border-radius: 5px;
     height: 600px;
     transition: all 0.5s ease;
+    font-size: clamp(16px, 1.5vw, 24px);
 
+}
+
+@mixin cardHover {
+    opacity: 0.6;
 }
 
 .project {
@@ -19,6 +24,7 @@
     }
 
     &__item {
+
         list-style: none;
     }
 }
@@ -30,13 +36,22 @@
 
 }
 
+.card {
+    width: 450px;
+    background-color: $font__color__a__hover;
+    border-radius: 5px
+}
+
 .card__front {
     @include card();
     transform: rotateY(0deg);
 
 
     &:hover {
+        @include cardHover();
         box-shadow: 0 8px 16px 0 rgba(255, 253, 253, 0.856);
+
+
     }
 
     &>img {
@@ -48,7 +63,7 @@
     }
 
     &__container {
-        padding: 2px 16px;
+        padding: 10px;
 
         &__git>a {
             display: block;
@@ -67,6 +82,7 @@
     @include card();
     transform: rotateY(180deg);
 
+
     &__container {
         //to prevent from text being reversed
         transform: rotateY(-180deg);
@@ -74,35 +90,72 @@
 
 }
 
-@media screen and (max-width: $screen__tablet) {
+@include mobile {
     .project {
         &__list {
 
             display: grid;
             grid-template-columns: repeat(1, 1fr);
-            gap: 30px;
+
         }
     }
 }
 
-@media screen and (min-width: $screen__tablet) {
+@include tablet {
     .project {
+
         &__list {
 
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+
         }
     }
 }
 
-@media only screen and (min-width: $screen__pc) {
+@media (min-width: 1600px) {
     .project {
         &__list {
 
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+
         }
     }
 }
+
+
+
+// @media screen and (max-width: $screen__tablet) {
+//     .project {
+//         &__list {
+
+//             display: grid;
+//             grid-template-columns: repeat(1, 1fr);
+
+//         }
+//     }
+// }
+
+// @media screen and (min-width: $screen__tablet) {
+//     .project {
+
+//         &__list {
+
+//             display: grid;
+//             grid-template-columns: repeat(2, 1fr);
+
+//         }
+//     }
+// }
+
+// @media only screen and (min-width: $screen__pc) {
+//     .project {
+//         &__list {
+
+//             display: grid;
+//             grid-template-columns: repeat(4, 1fr);
+
+//         }
+//     }
+// }

@@ -10,9 +10,11 @@ $font__color__a:#00C9A2;
 $font__color__a__hover:#C5FCEE;
 
 $font__main-nav: 18px;
-$font__post-nav: 18px;
-$font__header: 36px;
-$font__body: 24px;
+$font__post-nav: clamp(18px, 2vw, 30px);
+
+$font__header:clamp(24px, 4vw, 48px);
+
+$font__body: clamp(12px, 2vw, 24px);
 $font__footer: 18px;
 
 
@@ -20,9 +22,28 @@ $font__footer: 18px;
 // 481px — 768px: iPads, Tablets
 // 769px — 1024px: Small screens, laptops
 // 1025px — 1200px: Desktop
-$screen__mobile: 550px;
-$screen__tablet: 768px;
-$screen__pc:992px;
+$screen__mobile: 0px;
+$screen__tablet: 900px;
+$screen__pc:1600px;
+
+@mixin mobile {
+  @media (min-width: #{$screen__mobile}) and (max-width: #{$screen__tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$screen__tablet}) and (max-width: #{$screen__pc - 1px}) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: #{$screen__pc}) {
+    @content;
+  }
+
+}
 
 //Button Style
 @mixin buttonStyle {

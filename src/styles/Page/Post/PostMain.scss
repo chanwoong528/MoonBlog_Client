@@ -1,18 +1,34 @@
 @import "../../Variables/Variables.scss";
 
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%)
+  }
+
+  100% {
+    transform: translateX(0)
+  }
+}
+
 .post-main {
   &__btn {
     @include buttonStyle();
+
     &:hover {
       @include buttonHover();
     }
   }
+
   &__title {
     font-size: $font__header;
   }
+
   &__section {
     display: flex;
+
     &__aside {
+
+
       //postNav container
       &__pull {
         display: none;
@@ -21,24 +37,36 @@
   }
 }
 
-@media screen and (max-width: $screen__mobile) {
+@include mobile {
   .post-main {
+
     // &__title {
     // }
     &__section {
       display: flex;
       flex-direction: column;
+
       &__aside__active {
+        visibility: visible;
         position: absolute;
         border: 1px solid $tertiary__color;
         background-color: $tertiary__color;
         border-radius: 0 10px 10px 0;
         z-index: 100px;
         left: 0;
+        // transition: all 0.3s;
+        animation: slideRight 0.5s linear;
+        animation-direction: alternate;
       }
+
       &__aside {
-        display: none;
+        animation: slideLeft 1s linear;
+        visibility: hidden;
+        height: 0vh;
+
+
         &__pull {
+
           display: contents;
         }
       }

@@ -5,6 +5,7 @@ export default function ProjectCard({ project }) {
   return (
     <div className="card">
       {!flip ? (
+        //front of the acre
         <div className="card__front" onClick={() => setFlip(!flip)}>
           <img src={project.img} alt={project.title} />
           <div className="card__front__container">
@@ -21,6 +22,7 @@ export default function ProjectCard({ project }) {
           </div>
         </div>
       ) : (
+        //back of the card
         <div className="card__back" onClick={() => setFlip(!flip)}>
           <div className="card__back__container">
             <h4>{project.title}</h4>
