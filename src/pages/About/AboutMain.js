@@ -88,7 +88,7 @@ export default function AboutMain() {
                   <li style={{ listStyle: "none" }} key={cate.id}>
                     <div>
                       <h4 className="cate__title">{cate.title}</h4>
-                      <p>{cate.body}</p>
+                      <p style={{ margin: "10px 0 " }}>{cate.body}</p>
                     </div>
                   </li>
                 );

@@ -1,6 +1,8 @@
 import React from "react";
 
-export default function PageNumbers({ limit, totalPosts, paginate }) {
+import "../../../styles/Components/Pagination.scss";
+
+export default function PageNumbers({ limit, totalPosts, paginate, curpage }) {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / limit); i++) {
@@ -9,10 +11,17 @@ export default function PageNumbers({ limit, totalPosts, paginate }) {
 
   return (
     <nav>
-      <ul>
+      <ul className="thumbpost__container__pagenum__list">
         {pageNumbers.map((num) => (
-          <a style={{ color: "green" }} onClick={() => paginate(num)} href="!#">
-            <li key={num}>{num}</li>
+          <a onClick={(e) => paginate(num, e)} href="!#">
+            <li
+              className={`thumbpost__container__pagenum__item${
+                curpage === num ? " selected" : ""
+              }`}
+              key={num}
+            >
+              {num}
+            </li>
           </a>
         ))}
       </ul>

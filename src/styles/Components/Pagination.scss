@@ -1,0 +1,57 @@
+@import "../Variables/Variables.scss";
+
+
+
+.thumbpost__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+
+    &__postlist {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__postitem {
+        list-style: none;
+        margin: 4px;
+        width: 90%;
+        text-align: center;
+
+
+        &:hover {
+            border-radius: 4px;
+            background-color: $highlight-color;
+            cursor: pointer;
+
+        }
+    }
+
+    &__pagenum__list {
+
+        display: flex;
+    }
+
+    &__pagenum__item {
+
+        list-style: none;
+        padding: 4px;
+        background-color: #5940B3;
+        border-radius: 5px;
+        margin: 0 10px;
+        color: $font__color;
+
+        &:hover {
+            background-color: $highlight-hover;
+        }
+    }
+
+    &__pagenum__item.selected {
+        background-color: #998AB5;
+    }
+}

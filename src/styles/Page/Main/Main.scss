@@ -3,7 +3,6 @@
 .main {
     display: flex;
     flex-direction: column;
-    height: 94vh;
     position: relative;
     justify-content: center;
 
@@ -14,42 +13,60 @@
     }
 
     &__charts {
-
+        height: auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
         gap: 1.5rem;
         justify-items: center;
     }
 
     &__chart {
         min-width: 0;
-        max-width: 650px;
+        max-width: 680px;
         width: 100%;
         justify-content: center;
         align-items: center;
 
         &__container {
             width: 100%;
-            height: 100%;
+            height: 70vh;
             padding: 10px;
             border-radius: 10px;
             margin-top: 10px;
             box-shadow: 1px 1px 2px 2px #FFF;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+
+            &__postlist {
+                border: 3px solid $border__primary__color;
+                border-radius: 5px;
+                width: 90%;
+                height: 30%;
+
+
+
+            }
         }
     }
 
     &__sns {
         font-size: 50px;
         display: flex;
-        flex-direction: column;
-        position: absolute;
         padding: 10px;
-        bottom: 0;
-        left: 0;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
 
+        &__list {
+            display: flex;
+        }
 
         &__item {
             list-style: none;
+            margin: 20px;
 
             &:hover {
                 transform: scale(1.1);
@@ -62,16 +79,22 @@
     .main {
         justify-content: flex-start;
 
+        &__charts {
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+
         &__chart {
+
             max-width: 250px;
-            max-height: 550px;
+            max-height: 600px;
+
             justify-content: center;
             align-items: center;
 
 
             &__container {
+
                 width: 100%;
-                height: 100%;
                 padding: 10px;
             }
 
@@ -85,11 +108,12 @@
 
         &__charts {
             grid-template-columns: 1fr;
+            grid-template-rows: 3fr 3fr 0.5fr;
         }
 
         &__chart {
             max-width: 400px;
-            max-height: 400px;
+            max-height: 600px;
             width: 100%;
             justify-content: center;
             align-items: center;
@@ -97,26 +121,25 @@
 
             &__container {
                 width: 100%;
-
+                height: 500px;
                 padding: 10px;
             }
 
         }
 
         &__sns {
-            position: sticky;
+
             padding: 10px;
             right: 0;
 
 
             &__list {
                 display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                align-items: flex-end;
+                justify-content: center;
             }
 
             &__item {
+                margin: 10px;
                 list-style: none;
                 font-size: 40px;
 

@@ -16,9 +16,9 @@ export default function Main() {
   const [blink, setBlink] = useState(false);
   const { posts, postDispatch } = useContext(PostContext);
 
-  const REACT_ID = "61f61403f54a97321a52423b";
-  const JS_ID = "61f61415f54a97321a52423d";
-  const JOURNEY_ID = "6205ca3ba79ac79f5315ae21";
+  const REACT_ID = { name: "React", id: "61f61403f54a97321a52423b" };
+  const JS_ID = { name: "JS", id: "61f61415f54a97321a52423d" };
+  const JOURNEY_ID = { name: "Blog", id: "6205ca3ba79ac79f5315ae21" };
   useEffect(() => {
     const check = typeintro.slice(0, typeintro.length + 1);
     if (check === intro) {
@@ -68,13 +68,15 @@ export default function Main() {
         </div>
         <div className="main__chart">
           <div className="main__chart__container">
-            <Pagination postType={JS_ID} />
-          </div>
-          <div className="main__chart__container">
-            <Pagination postType={REACT_ID} />
-          </div>
-          <div className="main__chart__container">
-            <Pagination postType={JOURNEY_ID} />
+            <div className="main__chart__container__postlist">
+              <Pagination postType={JS_ID} />
+            </div>
+            <div className="main__chart__container__postlist">
+              <Pagination postType={REACT_ID} />
+            </div>
+            <div className="main__chart__container__postlist">
+              <Pagination postType={JOURNEY_ID} />
+            </div>
           </div>
 
           {
