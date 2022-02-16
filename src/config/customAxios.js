@@ -7,10 +7,15 @@ export const baseUrl = "https://moon-blog-js.herokuapp.com";
 const customAxios = axios.create({
   baseURL: baseUrl,
   headers: {
-    "x-access-token": accToken,
     "Content-Type": "application/json",
   },
   withCredentials: true,
+});
+
+customAxios.interceptors.request.use((config) => {
+  let token = localStorage.getItem("accToken");
+  config.headers["x-access-token"] = token;
+  return config;
 });
 
 customAxios.interceptors.response.use(
