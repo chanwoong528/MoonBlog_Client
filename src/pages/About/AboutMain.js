@@ -82,7 +82,7 @@ export default function AboutMain() {
           <article>
             <h4></h4>
 
-            <ul>
+            <ul className="about-main__section__moon__charlist">
               {personality.map((cate) => {
                 return (
                   <li style={{ listStyle: "none" }} key={cate.id}>
