@@ -10,6 +10,10 @@
     &__intro {
         display: inline-block;
         font-size: 5vw;
+
+        &__typing {
+            // color: red;
+        }
     }
 
     &__charts {

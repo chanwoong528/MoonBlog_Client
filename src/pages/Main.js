@@ -10,28 +10,74 @@ import customAxios from "../config/customAxios";
 import "../styles/Page/Main/Main.scss";
 import Pagination from "../components/Posts/postThumbnail/Pagination";
 
+const Phase = {
+  Typing: 0,
+  Pausing: 1,
+  Deleting: 2,
+};
+const intro = [
+  { str: "I am a Junior Developer", color: "red" },
+  { str: "I am a Front-End Developer", color: "green" },
+  { str: "I am a Javascript Developer", color: "orange" },
+];
+const useTypingAnimation = (intro) => {
+  const [phase, setPhase] = useState(Phase.Typing);
+  const [typedstr, setTypedstr] = useState("");
+  const [curidx, setCuridx] = useState(0);
+  useEffect(() => {
+    switch (phase) {
+      case Phase.Typing: {
+        const nextTypedstr = intro[curidx].str.slice(0, typedstr.length + 1);
+        if (nextTypedstr === typedstr) {
+          setPhase(Phase.Pausing);
+          return;
+        }
+        const timeout = setTimeout(() => {
+          setTypedstr(nextTypedstr);
+        }, 80);
+        return () => clearTimeout(timeout);
+      }
+
+      case Phase.Deleting: {
+        if (!typedstr) {
+          const nextidx = curidx + 1;
+          setCuridx(intro[nextidx] ? nextidx : 0);
+          setPhase(Phase.Typing);
+          return;
+        }
+        const nextRemainingstr = intro[curidx].str.slice(
+          0,
+          typedstr.length - 1
+        );
+
+        const timeout = setTimeout(() => {
+          setTypedstr(nextRemainingstr);
+        }, 30);
+        return () => clearTimeout(timeout);
+      }
+
+      case Phase.Pausing:
+      default:
+        const timeout = setTimeout(() => {
+          setPhase(Phase.Deleting);
+        }, 300);
+        return () => clearTimeout(timeout);
+    }
+  }, [intro, typedstr, phase, curidx]);
+
+  return typedstr;
+};
+
 export default function Main() {
-  const intro = "I am a Javascript Developer";
-  const [typeintro, setTypeintro] = useState("");
+  const typeintro = useTypingAnimation(intro);
+  console.log("!!!!: ", typeintro);
   const [blink, setBlink] = useState(false);
-  const { posts, postDispatch } = useContext(PostContext);
+  const { postDispatch } = useContext(PostContext);
 
   const REACT_ID = { name: "React", id: "61f61403f54a97321a52423b" };
   const JS_ID = { name: "JS", id: "61f61415f54a97321a52423d" };
   const JOURNEY_ID = { name: "Blog", id: "6205ca3ba79ac79f5315ae21" };
-  useEffect(() => {
-    const check = typeintro.slice(0, typeintro.length + 1);
-    if (check === intro) {
-      setTimeout(() => {
-        setTypeintro("");
-      }, 2500);
-    }
-    const timeout = setTimeout(() => {
-      setTypeintro(intro.slice(0, typeintro.length + 1));
-    }, 100);
 
-    return () => clearTimeout(timeout);
-  }, [typeintro]);
   useEffect(() => {
     setTimeout(() => {
       setBlink(!blink);
@@ -55,7 +101,8 @@ export default function Main() {
   return (
     <main className="main">
       <h5 className="main__intro">
-        <strong>Hi!</strong> {typeintro}
+        <strong>Hi!</strong>
+        <span className="main__intro__typing">{typeintro}</span>
         <strong className={blink ? "blinking__show" : "blinking__hide"}>
           |
         </strong>

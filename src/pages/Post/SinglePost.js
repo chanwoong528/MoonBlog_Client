@@ -114,25 +114,26 @@ export default function SinglePost() {
             <h4 className="single-post-main__date">
               Last Updated: {post.update_at.slice(0, 10)}
             </h4>
+
+            {isAdmin && !editmode && (
+              <div>
+                <button
+                  className="single-post-main__btn__del"
+                  onClick={onClickDeletePost}
+                >
+                  <MdDeleteForever size={30} />
+                </button>
+                <button
+                  className="single-post-main__btn__edit"
+                  onClick={() => {
+                    setEditMode(!editmode);
+                  }}
+                >
+                  <MdModeEdit size={30} />
+                </button>
+              </div>
+            )}
           </div>
-          {isAdmin && !editmode && (
-            <div>
-              <button
-                className="single-post-main__btn__del"
-                onClick={onClickDeletePost}
-              >
-                <MdDeleteForever size={30} />
-              </button>
-              <button
-                className="single-post-main__btn__edit"
-                onClick={() => {
-                  setEditMode(!editmode);
-                }}
-              >
-                <MdModeEdit size={30} />
-              </button>
-            </div>
-          )}
         </div>
         {editmode ? (
           <form

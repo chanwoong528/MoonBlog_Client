@@ -14,7 +14,7 @@ export default function ProjectCard({ project }) {
               <a href={project.gitUrl}>Github-URL</a>
               <a
                 href={project.url}
-                className={project.url === "NA" && "disabled"}
+                className={project.url === "NA" ? "disabled" : ""}
               >
                 Web-URL
               </a>
