@@ -11,14 +11,18 @@ export default function PostsList({ posts, topic }) {
         {topic._id === "0" ? "All Articles" : topic.topic}
       </h2>
       <ul className="post-list__list">
-        {posts.map((post) => (
-          <li className="post-list__item" key={post._id}>
-            <Link className="post-list__link" to={`/post/${post._id}`}>
-              {post.title}
-              {`(${post.views})`}
-            </Link>
-          </li>
-        ))}
+        {posts.length === 0 ? (
+          <h1>no post yet on this topic</h1>
+        ) : (
+          posts.map((post) => (
+            <li className="post-list__item" key={post._id}>
+              <Link className="post-list__link" to={`/post/${post._id}`}>
+                {post.title}
+                {`(${post.views})`}
+              </Link>
+            </li>
+          ))
+        )}
       </ul>
     </div>
   );
