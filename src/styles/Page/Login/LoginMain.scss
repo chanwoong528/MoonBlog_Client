@@ -2,8 +2,9 @@
 
 .login-main {
   height: 80vh;
-  &__title {
-  }
+
+  &__title {}
+
   &__form {
     height: 100%;
     display: flex;
@@ -14,26 +15,24 @@
     &__group {
       margin: 10px 0;
       position: relative;
+
       & input {
-        background-color: transparent;
-        border: 2px solid $highlight-color;
-        width: 200px;
-        height: 40px;
-        padding: 10px;
-        border-radius: 8px;
-        color: $font__color;
+        @include input();
+
+
         &:focus {
-          outline: none;
-          color: $font__color;
+          @include inputFocus();
         }
       }
+
       &__label {
         left: 4px;
         top: 4px;
         position: absolute;
       }
-      & input:focus + &__label,
-      & input:valid + &__label {
+
+      & input:focus+&__label,
+      & input:valid+&__label {
         display: none;
       }
     }
@@ -41,6 +40,7 @@
     &__btn {
       margin: 10px 0;
       @include buttonStyle();
+
       &:hover {
         @include buttonHover();
       }

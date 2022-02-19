@@ -1,16 +1,31 @@
 @import "../Variables/Variables.scss";
 
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 body {
   background-color: $background__color;
   color: $font__color;
+  // background-color: white;
+  // color: black !important;
   font-family: Arial, Helvetica, sans-serif;
   width: 100vw;
+
+  .dark--mode {
+    background-color: $background__color;
+    color: $font__color;
+  }
+
+  .light--mode {
+    background-color: white;
+    color: black
+  }
 
 
   &::-webkit-scrollbar {
@@ -23,6 +38,9 @@ body {
 a {
   text-decoration: none;
   color: $font__color;
+
+
+
 }
 
 main {

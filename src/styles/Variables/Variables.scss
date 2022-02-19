@@ -71,3 +71,19 @@ $screen__pc:1600px;
   font-size: $font__body;
   cursor: pointer;
 }
+
+@mixin input {
+  background-color: transparent;
+  border: 2px solid $highlight-color;
+  width: 200px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 8px;
+  color: $font__color;
+
+}
+
+@mixin inputFocus {
+  outline: none;
+  color: $font__color;
+}

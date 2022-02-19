@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import customAxios from "../../config/customAxios";
 
+import "../../styles/Page/User/Register.scss";
+
 export default function RegisterMain() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -24,50 +26,62 @@ export default function RegisterMain() {
       console.log(error.response.data);
     }
   };
+  const onClickLabel = (e) => {
+    e.target.previousSibling.focus();
+  };
 
   return (
-    <main>
+    <main className="main-reg">
       <h1>Register New User</h1>
 
-      <div>
-        <form onSubmit={onSubmitRegisterUser}>
-          <div>
+      <div className="main-reg__form-container">
+        <form
+          className="main-reg__form-container__form"
+          onSubmit={onSubmitRegisterUser}
+        >
+          <div className="main-reg__form-container__group">
             <input
-              type="text"
+              type="email"
+              required
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
             />
-            <label>Email </label>
+            <label onClick={onClickLabel}>Email</label>
           </div>
-          <div>
+          <div className="main-reg__form-container__group">
             <input
               type="text"
+              required
               onChange={(e) => {
                 setName(e.target.value);
               }}
             />
-            <label>Name </label>
+            <label onClick={onClickLabel}>Name </label>
           </div>
-          <div>
+          <div className="main-reg__form-container__group">
             <input
               type="password"
+              required
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
             />
-            <label>Password </label>
+            <label onClick={onClickLabel}>Password </label>
           </div>
-          <div>
+          <div className="main-reg__form-container__group">
             <input
-              type="passwordConf"
+              type="password"
+              required
               onChange={(e) => {
                 setPasswordConf(e.target.value);
               }}
             />
-            <label>Confirm Password </label>
+            <label onClick={onClickLabel}>Confirm Password </label>
           </div>
-          <button type="submit">Register</button>
+          <button className="main-reg__form-container__form__btn" type="submit">
+            Register
+          </button>
         </form>
       </div>
     </main>
