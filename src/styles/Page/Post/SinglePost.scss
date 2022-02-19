@@ -90,6 +90,11 @@
     overflow-x: hidden;
     font-size: $font__body;
 
+    img {
+
+      width: 100%;
+    }
+
     a {
       text-decoration: underline;
       color: $font__color__a;
@@ -105,13 +110,7 @@
       width: fit-content;
       max-width: 100%;
       overflow-x: auto;
-
-
-
       padding: 10px;
-
-
-
     }
 
 
