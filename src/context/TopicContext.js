@@ -38,7 +38,7 @@ export const TopicProvider = ({ children }) => {
   );
 
   const { topics, isLoading } = topicState;
-  console.log("provider: ", topicState);
+
   return (
     <TopicContext.Provider value={{ topicDispatch, topics, isLoading }}>
       {children}

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import customAxios from "../../config/customAxios";
 
@@ -17,7 +17,7 @@ export default function PostMain() {
   const { isAdmin } = useContext(AuthContext);
   const [selectedPostMenu, setSelectedPostMenu] = useState("0");
   const [showPostnav, setShowPostNav] = useState(false);
-
+  const mainRef = useRef(null);
   useEffect(() => {
     const getPosts = async () => {
       try {
@@ -69,7 +69,7 @@ export default function PostMain() {
           onMouseOver={() => {
             setShowPostNav(true);
           }}
-          onMouseOut={() => {
+          onMouseLeave={() => {
             setShowPostNav(false);
           }}
           className={

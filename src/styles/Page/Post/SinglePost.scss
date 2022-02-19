@@ -17,6 +17,8 @@
   display: flex;
   flex-direction: column;
   padding: 0 10px;
+  width: 100%;
+
 
   &__editform {
     padding: 10px;
@@ -45,7 +47,8 @@
 
   &__container {
     display: flex;
-    border-bottom: 2px solid $font__color;
+    flex-direction: column;
+
     justify-content: space-between;
   }
 
@@ -73,15 +76,19 @@
     margin-bottom: 10px;
   }
 
-  &__date {
-    justify-self: flex-end;
-    align-self: flex-end;
+  &__date__container {
+    border-top: 2px solid $font__color;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+
   }
 
   &__body {
     min-height: 80vh;
     padding: 10px;
-    border-left: 1px solid left;
+    overflow-x: hidden;
+    font-size: $font__body;
 
     a {
       text-decoration: underline;
@@ -93,20 +100,29 @@
       }
     }
 
-    .ql-syntax {
+    >.ql-syntax {
       background-color: black;
-      overflow-x: scroll;
       width: fit-content;
+      max-width: 100%;
+      overflow-x: auto;
+
+
+
       padding: 10px;
 
-      &::-webkit-scrollbar {
-        width: 0px;
-        background: transparent;
-        /* make scrollbar transparent */
-      }
+
 
     }
 
 
+  }
+}
+
+@include mobile {
+  .single-post-main {
+    &__date__container {
+      flex-direction: column;
+      align-items: flex-end;
+    }
   }
 }

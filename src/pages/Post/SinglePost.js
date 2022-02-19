@@ -13,6 +13,8 @@ import QuillEditor from "../../components/Editor/QuillEditor";
 
 import Comments from "../../components/Comments/Comments";
 
+import { MdDeleteForever, MdModeEdit } from "react-icons/md";
+
 import "../../styles/Page/Post/SinglePost.scss";
 
 export default function SinglePost() {
@@ -105,30 +107,33 @@ export default function SinglePost() {
       <main className="single-post-main">
         <div className="single-post-main__container">
           <h1 className="single-post-main__title">{post.title}</h1>
-          <h3 className="single-post-main__date">
-            Created at: {post.create_at.slice(0, 10)}
-          </h3>
-          <h3 className="single-post-main__date">
-            Last Updated: {post.update_at.slice(0, 10)}
-          </h3>
-          {isAdmin && !editmode && (
-            <div>
-              <button
-                className="single-post-main__btn__del"
-                onClick={onClickDeletePost}
-              >
-                X
-              </button>
-              <button
-                className="single-post-main__btn__edit"
-                onClick={() => {
-                  setEditMode(!editmode);
-                }}
-              >
-                Edit
-              </button>
-            </div>
-          )}
+          <div className="single-post-main__date__container">
+            <h4 className="single-post-main__date">
+              Created at: {post.create_at.slice(0, 10)}
+            </h4>
+            <h4 className="single-post-main__date">
+              Last Updated: {post.update_at.slice(0, 10)}
+            </h4>
+
+            {isAdmin && !editmode && (
+              <div>
+                <button
+                  className="single-post-main__btn__del"
+                  onClick={onClickDeletePost}
+                >
+                  <MdDeleteForever size={30} />
+                </button>
+                <button
+                  className="single-post-main__btn__edit"
+                  onClick={() => {
+                    setEditMode(!editmode);
+                  }}
+                >
+                  <MdModeEdit size={30} />
+                </button>
+              </div>
+            )}
+          </div>
         </div>
         {editmode ? (
           <form

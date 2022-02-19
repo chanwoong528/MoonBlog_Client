@@ -9,7 +9,7 @@
     height: 600px;
     transition: all 0.5s ease;
     font-size: clamp(16px, 1.5vw, 24px);
-
+    width: 360px;
 }
 
 @mixin cardHover {
@@ -37,7 +37,8 @@
 }
 
 .card {
-    width: 450px;
+
+    width: 100%;
     background-color: $font__color__a__hover;
     border-radius: 5px
 }
@@ -84,6 +85,7 @@
 
 
     &__container {
+        padding: 10px;
         //to prevent from text being reversed
         transform: rotateY(-180deg);
     }
