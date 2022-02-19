@@ -101,6 +101,7 @@ article>p {
 
     &__moon {
       @include section();
+      font-size: clamp(16px, 1.5vw, 25px);
     }
 
     &__project {
