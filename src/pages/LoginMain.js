@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { baseUrl } from "../config/customAxios";
 
@@ -67,6 +68,9 @@ export default function LoginMain() {
           Log In
         </button>
       </form>
+      <div>
+        <Link to="/user/pw">forgotpw?</Link>
+      </div>
     </main>
   );
 }

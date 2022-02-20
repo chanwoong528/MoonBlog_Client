@@ -18,6 +18,8 @@ import AdminMain from "./pages/AdminMain";
 import LoginMain from "./pages/LoginMain";
 import AboutMain from "./pages/About/AboutMain";
 import RegisterMain from "./pages/User/RegisterMain";
+import ForgotPWMain from "./pages/User/ForgotPWMain";
+import ResetPWMain from "./pages/User/ResetPWMain";
 
 function App() {
   const { userDispatch, isLoggedIn, isAdmin } = useContext(AuthContext);
@@ -54,6 +56,11 @@ function App() {
             <Route
               path="/auth"
               element={isLoggedIn ? <Main /> : <LoginMain />}
+            />
+            <Route path="/user/pw/:token" element={<ResetPWMain />} />
+            <Route
+              path="/user/pw"
+              element={isLoggedIn ? <Main /> : <ForgotPWMain />}
             />
             <Route
               path="/new"

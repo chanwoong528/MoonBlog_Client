@@ -41,7 +41,7 @@ export default function RegisterMain() {
         >
           <div className="main-reg__form-container__group">
             <input
-              type="email"
+              type="text"
               required
               onChange={(e) => {
                 setEmail(e.target.value);
