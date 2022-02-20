@@ -77,50 +77,148 @@ export const techStacks = [
   {
     name: "HTML",
     img: "https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white",
+    did: [
+      "Know basic HTML Tags and use them(div, img, a, body, video, little of canvas, etc...)",
+      "Knows reason for using Semantic tags, and trying to implement Semantic tags as possible.(header, footer, nav, section, article, etc...)",
+    ],
+    willdo: [
+      "Working on how to use Canvas for both personal project(game) and UI/UX improvements",
+    ],
   },
   {
     name: "CSS",
     img: "https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white",
+    did: [
+      "Knows how to use and differences on basic CSS layouts such as Grid , FlexBox, block, inline-block, and etcs",
+      "Knows how to implement basic functionality UI such as Modal, Slider, Scroll-Snapshot, and etc... with pure CSS",
+      "Knows how to implement reponsive design basics with @media queries.",
+      "Used clamp to have responsive font-size",
+    ],
+    willdo: ["Working on improving CSS animation with @keyframes"],
   },
   {
     name: "SCSS",
     img: "https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white",
+    did: [
+      "Used @mixin, to make some styling as module to be used in different SCSS files.",
+      "Used @mixin with @content to make Responsive Layout for different devices(PC, tablets, Mobile)",
+      "Used Variables such as font-size, certain number of colors to be used in Entire SCSS",
+      "Used Simple @for to have different animation when dealing with list of items",
+    ],
+    willdo: [
+      "Needs improvement on Architecturing Code with SCSS",
+      "Working on Improving @keyFrames",
+    ],
   },
   {
     name: "JS",
     img: "https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black",
+    did: [
+      "Tried to focus on JS Fundamentals such as Execution Context, Hoisting, Closure, Event Loop, ES06, and etcs",
+      "Used vanilla Javascript to make DOM manipulation to make small UI such as slider, modal, scroll event, etcs",
+      "One of the Project was made with pure vanilla JS, where tabs, selecting item form dropdown, etcs were implemented.",
+    ],
+    willdo: [
+      "Trying to learn more and be aware all the time about concepts of JS and how JS is executed.",
+    ],
   },
 
   {
     name: "REACTJS",
     img: "https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black",
+    did: [
+      "Most of the Projects that I did was in REACT(Hooks).",
+      "Knows basics of Life Cycle of REACT",
+      "Knows how to use basic Hooks such as useMemo, useCallback, useState, useReducer, useContext, useEffect",
+      "UI implementation such as parallax scrolling, drag and drop, dropdown, modal, slider and so on",
+      "Basic understanding on how React render using virtual DOM",
+      "Used Context API for projects for state management",
+      "Used axios, and axios.interceptors to implement Login, using refresh token and access token",
+    ],
+    willdo: [
+      "Class based React needs improvement.",
+      "Deeper Knowledge of React Hook",
+      "Deeper Knowledge on how React works behind the scene",
+      "different State management such as Mobx, redux",
+      "Implementing Typescript",
+      "Expand to React Native, and Electron",
+      "Implement Testing with library such as JEST ",
+    ],
   },
   {
     name: "NODEJS",
     img: "https://img.shields.io/badge/node.js-339933?style=for-the-badge&logo=Node.js&logoColor=white",
+
+    did: [
+      "Knows Basics of Nodejs and how it was created.",
+      "Mostly used nodejs with Express to build backend APIs.",
+    ],
+    willdo: [],
   },
   {
     name: "EXPRESSJS",
     img: "https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white",
+    did: [
+      "Knows how to receive request from client, and send data that is manipulated as needed.",
+      "Used Express-session to make Authentication",
+      "Used express-validator to validate data from client",
+      "Used JWT to reset password, login authentication",
+      "Knows basic knowledge of CORS.",
+    ],
+    willdo: [
+      "Needs improvement on architecture (trying to learn from cleancode lectures about best practices and reason behind it).",
+      "ORM that can be used with SQL based Database.",
+      "Implementing Typescript",
+      "Implement Testing with library such as JEST ",
+    ],
   },
   {
     name: "ORACLE",
     img: "https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white",
+    did: [
+      "Basic Knowledge on Queries(CRUD, join:{left, outer, inner})",
+      "Used in daily basis with expressJS to build backend APIs",
+    ],
+    willdo: [
+      "making Trigger, PL/SQL, and Procedure(as of now, only used which is already made)",
+      "Table Architecture needs improvement",
+    ],
   },
   {
     name: "MONGO",
     img: "https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white",
+    did: [
+      "Basic Knowledge on Queries(CRUD, populate)",
+      "Used for most of the personal projects due to accessibility",
+      "Used with express-session to store login sessions with mongo-connect",
+    ],
+    willdo: ["Table Architecture needs improvement"],
   },
   {
     name: "FIREBASE",
     img: "https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white",
+    did: [
+      "Used with personal project to avoid writing backend code.",
+      "Used Firestore as database(realtime) and Oauth",
+    ],
+    willdo: [],
   },
   {
     name: "GIT",
-    img: "https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white",
+    img: "https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white",
+    did: [
+      "Git to Store most of the works inside and outside of company",
+      "Knows basic use of git CLI.",
+    ],
+    willdo: [],
   },
   {
     name: "GITHUB",
-    img: "https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white",
+    img: "https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white",
+    did: [
+      "Personal Projects, especially backend, CI/CD to Heroku",
+      "Used github to coop with team members",
+    ],
+    willdo: ["Needs improvement to work on a team in a scale of company."],
   },
 ];
