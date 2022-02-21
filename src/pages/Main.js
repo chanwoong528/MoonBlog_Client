@@ -70,7 +70,6 @@ const useTypingAnimation = (intro) => {
 
 export default function Main() {
   const typeintro = useTypingAnimation(intro);
-  console.log("!!!!: ", typeintro);
   const [blink, setBlink] = useState(false);
   const { postDispatch } = useContext(PostContext);
 
