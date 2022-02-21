@@ -13,11 +13,12 @@ export default function TechStack() {
         {techStacks.map((stack, index) => {
           return (
             <li
-              onMouseEnter={() => {
-                setSelectedStack(stack);
-              }}
+              // onMouseEnter={async() => {
+
+              // }}
               onClick={() => {
-                setShowdetail(selectedStack.name === stack.name);
+                setSelectedStack(stack);
+                setShowdetail(true);
               }}
               className={`stack__item__${index}`}
               key={stack.name}

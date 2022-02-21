@@ -6,6 +6,7 @@ import ProjectList from "../../components/BlogProjects/ProjectList";
 
 import { personality, sns } from "../../Data/AboutPage/Aboutme";
 import TechStack from "../../components/TechStack/TechStack";
+import Timeline from "../../components/Timeline/Timeline";
 
 export default function AboutMain() {
   // about creating this blog phase
@@ -41,7 +42,7 @@ export default function AboutMain() {
               welcome, you could either write me a comments, or contact me.
             </p>
           </article>
-
+          <Timeline />
           <div className="about-main__section__blog__contact">
             <h2 className="about-main__title">Contact Me</h2>
             <div className="about-main__section__blog__contact__sns">

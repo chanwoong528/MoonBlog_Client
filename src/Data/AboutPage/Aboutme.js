@@ -31,7 +31,7 @@ export const personality = [
 export const projects = [
   {
     id: 0,
-    title: "Our Neighbor Story",
+    title: "Our Neighbor Story(Renewal on Progress)",
     url: "NA",
     img: "https://res.cloudinary.com/dwu0u1r6l/image/upload/v1644761660/moonblog_image/ourneighborstory_japafz.jpg",
     gitUrl: "https://github.com/chanwoong528/ourResidentManager",
@@ -39,6 +39,7 @@ export const projects = [
       "https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white",
       "https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white",
       "https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white",
+      "https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white",
     ],
   },
   {
@@ -47,7 +48,11 @@ export const projects = [
     url: "https://chanwoong528.github.io/ourNeighborFoodTruck/",
     img: "https://res.cloudinary.com/dwu0u1r6l/image/upload/v1644761777/moonblog_image/113100500-77c1a200-9236-11eb-900e-3f8ca1d26b3e_efgb90.jpg",
     gitUrl: "https://github.com/chanwoong528/ourNeighborFoodTruck",
-    stackImg: [],
+    stackImg: [
+      "https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white",
+      "https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black",
+      "https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white",
+    ],
   },
   {
     id: 2,
@@ -55,7 +60,11 @@ export const projects = [
     url: "https://chanwoong528.github.io/customerManagement/",
     img: "https://res.cloudinary.com/dwu0u1r6l/image/upload/v1644761397/moonblog_image/customerManagement_j7bv0l.png",
     gitUrl: "https://github.com/chanwoong528/customerManagement",
-    stackImg: [],
+    stackImg: [
+      "https://img.shields.io/badge/firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white",
+      "https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black",
+      "https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white",
+    ],
   },
   {
     id: 3,
@@ -63,7 +72,38 @@ export const projects = [
     url: "https://moonblogjs.netlify.app/",
     img: "https://res.cloudinary.com/dwu0u1r6l/image/upload/v1644762171/moonblog_image/blog_example_lwwoej.png",
     gitUrl: "https://github.com/chanwoong528/MoonBlog_Client",
-    stackImg: [],
+    stackImg: [
+      "https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white",
+      "https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black",
+      "https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white",
+      "https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white",
+    ],
+  },
+  {
+    id: 4,
+    title: "Ebid Renewal(Signetics)",
+    url: "NA",
+    img: "https://res.cloudinary.com/dwu0u1r6l/image/upload/v1644762171/moonblog_image/blog_example_lwwoej.png",
+    gitUrl: "NA",
+    stackImg: [
+      "https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black",
+      "https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white",
+      "https://img.shields.io/badge/mongoDB-47A248?style=for-the-badge&logo=MongoDB&logoColor=white",
+      "https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white",
+    ],
+  },
+  {
+    id: 4,
+    title: "SCM Renewal(Signetics)",
+    url: "NA",
+    img: "https://res.cloudinary.com/dwu0u1r6l/image/upload/v1644762171/moonblog_image/blog_example_lwwoej.png",
+    gitUrl: "NA",
+    stackImg: [
+      "https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black",
+      "https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white",
+      "https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white",
+      "https://img.shields.io/badge/oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white",
+    ],
   },
 ];
 export const sns = [
