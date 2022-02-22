@@ -10,6 +10,16 @@
   }
 }
 
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0)
+  }
+
+  100% {
+    transform: translateX(-100%)
+  }
+}
+
 .post-main {
   &__btn {
     @include buttonStyle();
@@ -60,9 +70,14 @@
       }
 
       &__aside {
-        animation: slideLeft 1s linear;
-        visibility: hidden;
-        height: 0vh;
+        animation: slideLeft 0.1s linear;
+        position: absolute;
+        border: 1px solid $tertiary__color;
+        background-color: $tertiary__color;
+        border-radius: 0 10px 10px 0;
+        z-index: 100px;
+        animation-fill-mode: forwards;
+
 
 
         &__pull {

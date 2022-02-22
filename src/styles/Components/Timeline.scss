@@ -56,11 +56,14 @@
 }
 
 .content {
-    border: 1px solid blue;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 11% 76%, 0 100%, 0% 75%);
+
+
+
     position: absolute;
     width: 400px;
     height: 200px;
-    background-color: #fff;
+    background-color: blue;
     z-index: 1000;
 
     bottom: 0;

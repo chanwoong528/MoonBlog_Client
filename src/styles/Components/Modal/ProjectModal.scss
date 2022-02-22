@@ -1,0 +1,46 @@
+@import "../../Variables/Variables.scss";
+
+
+.project-modal__bg {
+    position: fixed;
+    z-index: 10000;
+    left: 0%;
+    top: 0%;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.project-modal__body {
+    background-color: #fefefe;
+    border-radius: 10px;
+    position: absolute;
+    padding: 30px;
+    border: 1px solid #888;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+
+    &__desc {
+        color: black;
+    }
+
+    &__imgs {
+
+        &>ul {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &>ul>img {
+            width: 50%;
+        }
+    }
+
+}

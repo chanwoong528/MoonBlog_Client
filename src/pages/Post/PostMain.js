@@ -66,11 +66,8 @@ export default function PostMain() {
       )}
       <section className="post-main__section">
         <aside
-          onMouseOver={() => {
-            setShowPostNav(true);
-          }}
-          onMouseLeave={() => {
-            setShowPostNav(false);
+          onClick={() => {
+            setShowPostNav(!showPostnav);
           }}
           className={
             showPostnav

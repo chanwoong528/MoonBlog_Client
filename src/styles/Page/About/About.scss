@@ -50,9 +50,9 @@ article>p {
 
   &__section {
     //width: fit-content;
-    margin: 20px 0;
+    margin: 30px 0;
     height: 100vh;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
 
     &__blog {
       @include section();

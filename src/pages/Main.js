@@ -16,13 +16,14 @@ const Phase = {
   Deleting: 2,
 };
 const intro = [
-  { str: "I am a Junior Developer", color: "red" },
-  { str: "I am a Front-End Developer", color: "green" },
-  { str: "I am a Javascript Developer", color: "orange" },
+  { str: "I am a Junior Developer", color: "#F9F871" },
+  { str: "I am a Front-End Developer", color: "#FFC6A3" },
+  { str: "I am a Javascript Developer", color: "#F88F6F" },
 ];
 const useTypingAnimation = (intro) => {
   const [phase, setPhase] = useState(Phase.Typing);
   const [typedstr, setTypedstr] = useState("");
+  const [color, setColor] = useState("");
   const [curidx, setCuridx] = useState(0);
   useEffect(() => {
     switch (phase) {
@@ -34,6 +35,7 @@ const useTypingAnimation = (intro) => {
         }
         const timeout = setTimeout(() => {
           setTypedstr(nextTypedstr);
+          setColor(intro[curidx].color);
         }, 80);
         return () => clearTimeout(timeout);
       }
@@ -65,11 +67,12 @@ const useTypingAnimation = (intro) => {
     }
   }, [intro, typedstr, phase, curidx]);
 
-  return typedstr;
+  return [typedstr, color];
 };
 
 export default function Main() {
   const typeintro = useTypingAnimation(intro);
+
   const [blink, setBlink] = useState(false);
   const { postDispatch } = useContext(PostContext);
 
@@ -95,14 +98,19 @@ export default function Main() {
       }
     };
     getPosts();
-  }, []);
+  }, [postDispatch]);
 
   return (
     <main className="main">
       <h5 className="main__intro">
-        <strong>Hi!</strong>
-        <span className="main__intro__typing">{typeintro}</span>
-        <strong className={blink ? "blinking__show" : "blinking__hide"}>
+        <strong>Hi! 👋</strong>
+        <span style={{ color: typeintro[1] }} className="main__intro__typing">
+          {typeintro[0]}
+        </span>
+        <strong
+          style={{ color: typeintro[1] }}
+          className={blink ? "blinking__show" : "blinking__hide"}
+        >
           |
         </strong>
       </h5>
