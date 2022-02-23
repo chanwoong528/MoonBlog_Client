@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import customAxios from "../../config/customAxios";
 
@@ -9,7 +10,7 @@ export default function RegisterMain() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConf, setPasswordConf] = useState("");
-
+  const navigator = useNavigate();
   const onSubmitRegisterUser = async (e) => {
     e.preventDefault();
     try {
@@ -22,6 +23,10 @@ export default function RegisterMain() {
       });
       const data = await res.data;
       console.log(data);
+      if (res.status === 200) {
+        alert(data.msg);
+        navigator("/auth");
+      }
     } catch (error) {
       console.log(error.response.data);
     }

@@ -27,6 +27,24 @@
     flex-direction: column;
     color: black;
 
+    &__btn {
+        position: fixed;
+        width: 25px;
+        height: 25px;
+        font-size: 25px;
+        right: 5px;
+        top: 5px;
+
+        border: none;
+        background-color: transparent;
+        color: $danger__color;
+
+        &:hover {
+            transform: scale(1.2);
+            cursor: pointer;
+            color: red;
+        }
+    }
 
     &__desc,
     &__key,

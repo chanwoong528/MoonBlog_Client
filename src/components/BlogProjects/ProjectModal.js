@@ -1,4 +1,7 @@
 import React from "react";
+
+import { TiTimes } from "react-icons/ti";
+
 import "../../styles/Components/Modal/ProjectModal.scss";
 
 export default function ProjectModal({ project, setShowmodal }) {
@@ -13,6 +16,14 @@ export default function ProjectModal({ project, setShowmodal }) {
   return (
     <div className="project-modal__bg" onClick={onClickBackground}>
       <div className="project-modal__body">
+        <button
+          onClick={() => {
+            setShowmodal(false);
+          }}
+          className="project-modal__body__btn"
+        >
+          <TiTimes />
+        </button>
         <div className="project-modal__body__desc">
           <h2>📑 Description</h2>
           <p>{project.summary}</p>

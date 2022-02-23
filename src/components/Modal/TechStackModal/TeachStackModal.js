@@ -1,4 +1,6 @@
 import React from "react";
+import { TiTimes } from "react-icons/ti";
+
 import "../../../styles/Components/Modal/TechStackModal.scss";
 const Teachstackmodal = ({ stack, setShowdetail }) => {
   const onClickBackground = (e) => {
@@ -12,6 +14,14 @@ const Teachstackmodal = ({ stack, setShowdetail }) => {
   return (
     <div className="stack-modal__bg" onClick={onClickBackground}>
       <div className="stack-modal__body">
+        <button
+          onClick={() => {
+            setShowdetail(false);
+          }}
+          className="project-modal__body__btn"
+        >
+          <TiTimes />
+        </button>
         <header className="stack-modal__body__header">
           <img src={stack.img} alt={stack.name} />
         </header>
