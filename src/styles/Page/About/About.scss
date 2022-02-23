@@ -58,7 +58,16 @@ article>p {
       @include section();
       display: flex;
       justify-content: center;
-      font-size: clamp(16px, 2vw, 70px);
+      font-size: clamp(16px, 2vw, 24px);
+
+      &__edu {
+        margin: 5%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+      }
 
       &__contact {
         color: black;

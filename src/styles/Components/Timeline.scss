@@ -1,7 +1,7 @@
 @import '../Variables/Variables.scss';
 
 @mixin point {
-    background-color: orange;
+    background-color: #9D7BF7;
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -17,7 +17,7 @@
 }
 
 .timeline {
-    border-bottom: 8px solid red;
+    border-bottom: 8px solid #00A7C8;
     width: 70%;
     margin: 5%;
     align-self: center;
@@ -56,16 +56,17 @@
 }
 
 .content {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 11% 76%, 0 100%, 0% 75%);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 24% 77%, 0 100%, 9% 75%, 0% 75%);
 
-
-
+    padding: 10px;
+    font-size: $font__body;
     position: absolute;
     width: 400px;
     height: 200px;
-    background-color: blue;
+    background-color: #FFF5FF;
+    border-radius: 10px;
     z-index: 1000;
 
-    bottom: 0;
+    bottom: 10px;
     transform: translate(10px, -10px);
 }

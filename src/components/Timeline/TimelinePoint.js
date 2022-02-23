@@ -12,7 +12,13 @@ export default function TimelinePoint({ className, item }) {
       }}
     >
       <div className="inner"></div>
-      {showdetail && <div className="content">{item.detail}</div>}
+      {showdetail && (
+        <div className="content">
+          <h4>{item.place}</h4>
+          <p>{item.date}</p>
+          <p> {item.detail}</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -42,7 +42,10 @@ export default function AboutMain() {
               welcome, you could either write me a comments, or contact me.
             </p>
           </article>
-          <Timeline />
+          <div className="about-main__section__blog__edu">
+            <h3>Education and Experience</h3>
+            <Timeline />
+          </div>
           <div className="about-main__section__blog__contact">
             <h2 className="about-main__title">Contact Me</h2>
             <div className="about-main__section__blog__contact__sns">

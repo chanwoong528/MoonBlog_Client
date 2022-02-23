@@ -58,8 +58,14 @@
 @for $i from 0 to 12 {
     .stack__item__#{$i} {
         list-style: none;
-        animation: float 1s infinite;
-        animation-delay: #{$i * 0.1}s;
+        margin: 4px;
+
+        &:hover {
+            animation: float 1s infinite;
+            animation-delay: #{$i * 0.1}s;
+
+            cursor: pointer;
+        }
 
     }
 }

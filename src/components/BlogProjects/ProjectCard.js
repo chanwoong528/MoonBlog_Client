@@ -19,7 +19,7 @@ export default function ProjectCard({ project }) {
             <h4>{project.title}</h4>
             <p className="card__front__container__git">
               <a
-                className={project.url === "NA" ? "disabled" : ""}
+                className={project.gitUrl === "NA" ? "disabled" : ""}
                 href={project.gitUrl}
               >
                 Github-URL
@@ -37,19 +37,22 @@ export default function ProjectCard({ project }) {
         //back of the card
         <div className="card__back" onClick={() => setFlip(!flip)}>
           <div className="card__back__container">
-            <h4>{project.title}</h4>
-            <div>
-              <h4>Stacks:</h4>
-              {project.stackImg.map((imgUrl) => (
-                <img src={imgUrl} alt={project.title} />
-              ))}
+            <header>
+              <h4>{project.title}</h4>
+              <div className="card__back__container__stack">
+                <h4>Stacks:</h4>
+                {project.stackImg.map((imgUrl) => (
+                  <img src={imgUrl} alt={project.title} />
+                ))}
+              </div>
+            </header>
+            <div className="card__back__container__desc">
+              <h4>Summary: </h4>
+              <p>{project.summary}</p>
             </div>
-            <div>
-              <h4>Description:</h4>
-
-              <p></p>
-            </div>
-            <button onClick={onClickDetailModal}>SeeDetail</button>
+            <footer>
+              <button onClick={onClickDetailModal}>SeeDetail</button>
+            </footer>
           </div>
         </div>
       )}

@@ -24,14 +24,16 @@ const Teachstackmodal = ({ stack, setShowdetail }) => {
             ))}
           </ul>
         </div>
-        <div className="stack-modal__body__content__willdo">
-          <h2>What I will be doing and improve on: {stack.name}</h2>
-          <ul>
-            {stack.willdo.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
+        {stack.willdo.length > 0 && (
+          <div className="stack-modal__body__content__willdo">
+            <h2>What I will be doing and improve on: {stack.name}</h2>
+            <ul>
+              {stack.willdo.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

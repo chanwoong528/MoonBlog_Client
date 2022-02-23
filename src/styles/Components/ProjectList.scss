@@ -20,6 +20,7 @@
     &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
+
         gap: 20px;
     }
 
@@ -81,13 +82,31 @@
 
 .card__back {
     @include card();
+    font-size: clamp(12px, 2vw, 20px);
     transform: rotateY(180deg);
-
 
     &__container {
         padding: 10px;
         //to prevent from text being reversed
         transform: rotateY(-180deg);
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &>footer {
+            display: flex;
+            justify-content: center;
+
+            &>button {
+                @include buttonStyle();
+
+                &:hover {
+                    @include buttonHover();
+                }
+            }
+        }
+
     }
 
 }
@@ -105,9 +124,7 @@
 
 @include tablet {
     .project {
-
         &__list {
-
             display: grid;
             grid-template-columns: repeat(2, 1fr);
 
@@ -120,7 +137,8 @@
         &__list {
 
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+
 
         }
     }
