@@ -32,7 +32,7 @@ article>p {
     scroll-snap-type: y proximity;
     overflow-y: auto;
     justify-items: center;
-    height: 100vh;
+    height: 90vh;
     width: 100%;
 
 
@@ -133,6 +133,11 @@ article>p {
 
 @include mobile {
   .about-main {
+    &__container {
+      scroll-snap-type: none;
+
+    }
+
     &__section {
       &__moon {
         &__charlist {
