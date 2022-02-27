@@ -1,0 +1,64 @@
+@import "../../Variables/Variables.scss";
+
+.admin-main {
+    display: flex;
+    flex-direction: column;
+
+    &__form {
+        //  &__group {}
+
+        &__btn {
+            @include buttonStyle();
+
+            &:hover {
+                @include buttonHover();
+            }
+        }
+    }
+
+
+}
+
+.topic__container {
+
+
+    &__list {
+        border: 1px solid #fff;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+    }
+
+    &__item {
+        list-style: none;
+        display: flex;
+        margin: 10px;
+        position: relative;
+
+        //   &__info-container {}
+
+        &__btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            background-color: transparent;
+            color: $danger__color;
+            border: none;
+
+            &:hover {
+                cursor: pointer;
+                transform: scale(1.2);
+                color: red;
+
+            }
+        }
+
+        &:hover {
+            color: black;
+            background-color: $border__primary__color;
+            cursor: pointer;
+        }
+
+    }
+}

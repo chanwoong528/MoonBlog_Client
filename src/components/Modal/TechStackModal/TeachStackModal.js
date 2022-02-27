@@ -3,6 +3,7 @@ import { TiTimes } from "react-icons/ti";
 
 import "../../../styles/Components/Modal/TechStackModal.scss";
 const Teachstackmodal = ({ stack, setShowdetail }) => {
+  console.log("opened!");
   const onClickBackground = (e) => {
     e.preventDefault();
     e.stopPropagation();

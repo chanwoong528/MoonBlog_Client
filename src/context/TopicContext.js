@@ -19,11 +19,25 @@ const TopicReducer = (state = initialTopciState, action) => {
       return { ...state, topics: [...state.topics, action.payload.topic] };
     case "DELTE_TOPIC":
       console.log("DELTE_TOPIC", action.payload.topicId);
-
       return {
         ...state,
         topics: state.topics.filter((topic) => {
           return topic._id !== action.payload.topicId;
+        }),
+      };
+    case "UPDATE_TOPIC":
+      console.log("UPDATE_TOPIC", action.payload.topicId);
+      return {
+        ...state,
+        topics: state.topics.map((topicInfo) => {
+          if (topicInfo._id === action.payload.topicId) {
+            return {
+              ...topicInfo,
+              topic: action.payload.topic,
+              description: action.payload.description,
+            };
+          }
+          return topicInfo;
         }),
       };
     default:

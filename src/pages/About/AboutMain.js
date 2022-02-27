@@ -64,7 +64,6 @@ export default function AboutMain() {
         <section className="about-main__section__moon about-main__section">
           <h2 className="about-main__title">About Me</h2>
           <article>
-            <h4></h4>
             <p>
               I am a Junior Frontend developer who finds developing an app as
               the greatest joy. Programming was not something that I was into
@@ -76,7 +75,6 @@ export default function AboutMain() {
             </p>
           </article>
           <article>
-            <h4></h4>
             <p>
               Although, I am still very inexperienced in many ways, I try as
               much as I could to be better. I am highly motivated, self-driven,
@@ -84,8 +82,6 @@ export default function AboutMain() {
             </p>
           </article>
           <article>
-            <h4></h4>
-
             <ul className="about-main__section__moon__charlist">
               {personality.map((cate) => {
                 return (

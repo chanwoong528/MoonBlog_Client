@@ -4,9 +4,14 @@ import { TopicContext } from "../context/TopicContext";
 
 import customAxios from "../config/customAxios";
 
+import "../styles/Page/Admin/AdminMain.scss";
+import TopicEditModal from "../components/Modal/TopicEditModal/TopicEditModal";
+
 export default function AdminMain() {
   const [topic, setTopic] = useState("");
   const [description, setDescription] = useState("");
+  const [selectedTopic, setSelectedTopic] = useState({});
+  const [editModal, setEditModal] = useState(false);
   const { topicDispatch, topics } = useContext(TopicContext);
 
   useEffect(() => {
@@ -44,7 +49,9 @@ export default function AdminMain() {
       console.log(error.response.data);
     }
   };
-  const onClickDeleteTopic = async (delTopic) => {
+  const onClickDeleteTopic = async (delTopic, e) => {
+    console.log("click [onClickDeleteTopic]");
+    e.stopPropagation();
     let confirm = window.confirm("You Sure To Delete a Topic?");
     if (confirm) {
       try {
@@ -64,43 +71,57 @@ export default function AdminMain() {
       return;
     }
   };
+
   return (
-    <main>
+    <main className="admin-main">
       <h1>Admin Page</h1>
-      <div>
-        <form onSubmit={onSubmitTopic}>
-          <div>
-            <label>Topic of Post To Add:</label>
-            <input
-              type="text"
-              onChange={(e) => {
-                setTopic(e.target.value);
-              }}
-            />
-          </div>
-          <div>
-            <label>Description of Topic:</label>
-            <textarea
-              type="text"
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-            />
-          </div>
-          <button type="submit">Add Topic</button>
-        </form>
-      </div>
-      <div>
-        <ul>
+      <form className="admin-main__form" onSubmit={onSubmitTopic}>
+        <div className="admin-main__form__group">
+          <label>Topic of Post To Add:</label>
+          <input
+            type="text"
+            onChange={(e) => {
+              setTopic(e.target.value);
+            }}
+          />
+        </div>
+        <div className="admin-main__form__group">
+          <label>Description of Topic:</label>
+          <textarea
+            type="text"
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          />
+        </div>
+        <button className="admin-main__form__btn" type="submit">
+          Add Topic
+        </button>
+      </form>
+
+      <div className="topic__container">
+        <ul className="topic__container__list">
           {topics
             .filter((topic) => topic._id !== "0")
             .map((topic) => {
               return (
-                <li key={topic._id}>
-                  {topic.topic}
+                <li
+                  className="topic__container__item"
+                  key={topic._id}
+                  onClick={() => {
+                    setSelectedTopic(topic);
+                    setEditModal(true);
+                  }}
+                >
+                  <div className="topic__container__item__info-container">
+                    <h2>{topic.topic}</h2>
+                    <p>{topic.description}</p>
+                  </div>
+
                   <button
+                    className="topic__container__item__btn"
                     onClick={(e) => {
-                      onClickDeleteTopic(topic);
+                      onClickDeleteTopic(topic, e);
                     }}
                   >
                     X
@@ -110,6 +131,9 @@ export default function AdminMain() {
             })}
         </ul>
       </div>
+      {editModal && (
+        <TopicEditModal topic={selectedTopic} setEditModal={setEditModal} />
+      )}
     </main>
   );
 }
