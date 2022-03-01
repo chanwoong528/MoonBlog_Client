@@ -236,7 +236,10 @@ export const projects = [
       "Tried to implement BEM for CSS naming convention. ",
       "Better understanding of Responsive Design",
     ],
-    viewImg: [],
+    viewImg: [
+      "https://res.cloudinary.com/dwu0u1r6l/image/upload/v1646175637/moonblog_image/adminpage_trx4wg.png",
+      "https://res.cloudinary.com/dwu0u1r6l/image/upload/v1646175637/moonblog_image/adminmodal_igpnwj.png",
+    ],
     stackImg: [
       "https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white",
       "https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black",
