@@ -11,7 +11,12 @@ export default function LoginMain() {
   const { userDispatch } = useContext(AuthContext);
   const onSubmitLogin = async (e) => {
     e.preventDefault();
+    const regexp = /^\S*$/;
+    if (!regexp.test(email) || !regexp.test(password)) {
+      return alert("Email or Password should not have White space.");
+    }
     const req = { email, password };
+
     try {
       const res = await fetch(`${baseUrl}/auth`, {
         method: "POST",
@@ -35,6 +40,9 @@ export default function LoginMain() {
         localStorage.setItem("accToken", data.accToken);
         localStorage.setItem("refToken", data.refToken);
       } else {
+        if (res.status === 401) {
+          alert(data.msg);
+        }
       }
     } catch (err) {
       console.log("err: ", err.response.data);
