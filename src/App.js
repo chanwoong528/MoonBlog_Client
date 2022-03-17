@@ -23,7 +23,7 @@ import ResetPWMain from "./pages/User/ResetPWMain";
 
 function App() {
   const { userDispatch, isLoggedIn, isAdmin } = useContext(AuthContext);
-
+  console.log();
   useEffect(() => {
     const checkLogin = async () => {
       const res = await customAxios("/auth");
