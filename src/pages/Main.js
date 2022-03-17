@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 
 import BarChart from "../components/Chart/BarChart";
 import DoughnutChart from "../components/Chart/DoughnutChart";
@@ -9,6 +10,7 @@ import { sns } from "../Data/AboutPage/Aboutme";
 import customAxios from "../config/customAxios";
 import "../styles/Page/Main/Main.scss";
 import Pagination from "../components/Posts/postThumbnail/Pagination";
+import { AuthContext } from "../context/AuthContext";
 
 const Phase = {
   Typing: 0,
@@ -71,15 +73,39 @@ const useTypingAnimation = (intro) => {
 };
 
 export default function Main() {
+  const { userDispatch } = useContext(AuthContext);
   const typeintro = useTypingAnimation(intro);
-
   const [blink, setBlink] = useState(false);
+  const { token } = useParams();
   const { postDispatch } = useContext(PostContext);
 
   const REACT_ID = { name: "React", id: "61f61403f54a97321a52423b" };
   const JS_ID = { name: "JS", id: "61f61415f54a97321a52423d" };
   const JOURNEY_ID = { name: "Blog", id: "6205ca3ba79ac79f5315ae21" };
-
+  useEffect(() => {
+    const checkLogin = async () => {
+      const res = await customAxios("/auth");
+      console.log("checkLogin: ", res);
+      if (res.status === 200) {
+        userDispatch({
+          type: "LOGGED_IN_USER",
+          payload: {
+            isLoggedIn: res.data.isLoggedIn,
+            isAdmin: res.data.user.admin,
+            user: res.data.user,
+          },
+        });
+      } else {
+        userDispatch({
+          type: "LOGGED_OUT_USER",
+        });
+      }
+    };
+    if (token) {
+      localStorage.setItem("accToken", token);
+      checkLogin();
+    }
+  }, [userDispatch, token]);
   useEffect(() => {
     setTimeout(() => {
       setBlink(!blink);

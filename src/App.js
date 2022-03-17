@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import customAxios from "./config/customAxios";
 
 import { AuthContext } from "./context/AuthContext";
@@ -51,6 +51,7 @@ function App() {
         <PostProvider>
           <Navbar />
           <Routes>
+            <Route path="/:token" element={<Main />} />
             <Route path="/" element={<Main />} />
             <Route path="/admin" element={isAdmin ? <AdminMain /> : <Main />} />
             <Route
