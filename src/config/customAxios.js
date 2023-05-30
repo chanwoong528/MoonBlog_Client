@@ -2,7 +2,7 @@ import axios from "axios";
 //let accToken = localStorage.getItem("accToken");
 // export const baseUrl = "https://moon-blog-js.herokuapp.com";
 // export const baseUrl = "http://localhost:5002";
-export const baseUrl = "https://moonblogserver-development.up.railway.app";
+export const baseUrl = "https://moonblogserver-production.up.railway.app";
 const customAxios = axios.create({
   baseURL: baseUrl,
   headers: {
